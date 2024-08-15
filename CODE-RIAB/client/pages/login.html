@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
+
+    <link rel="stylesheet" href="/CODE-RIAB/client/styles/style.css">
 </head>
 <body>
-    
+    <main>
+        <div class="form-contenedor">
+            <h1>Iniciar sesión</h1>
+            <p>Ingresá tus usuario y contraseña para acceder</p>
+            <form id="login-form">
+                <label for="user">User</label>
+                <input type="text" name="user" id="user" placeholder="Nombre de usuario">
+
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password" placeholder="Contraseña">
+
+                <button type="submit">Iniciar Sesión</button>
+                <p class="error esconder">Error al iniciar sesión</p>
+            </form>
+            <p>¿No tenés una cuenta? <a href="/CODE-RIAB/client/pages/register.html">Registrate</a> </p>
+        </div>
+    </main>
+     
+    <script src="/CODE-RIAB/client/scripts/login.js"></script>
 </body>
 </html>
