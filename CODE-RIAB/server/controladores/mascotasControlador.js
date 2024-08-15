@@ -45,9 +45,7 @@ const crearMascotas = async (req, res) => {
       return res.status(401).json({error: "Número de año de nacimiento inválido"})
     }
 
-    const mascotaNuevo = await mascota.create({ 
-     nombre_apodo, raza, color, estado_salud, anio_nacimiento
-    });
+    const mascotaNuevo = await mascota.create({ nombre_apodo, raza, color, estado_salud, anio_nacimiento });
     mascotaNuevo.save();
 
     return res.status(200).json({
