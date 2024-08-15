@@ -1,24 +1,36 @@
 const { Sequelize } = require('sequelize');
-const sequelize = require('../config/db_sequelize');
+const db = require('../config/db_sequelize');
 
-// Definir la estructura de la tabla rescatistas
-const Rescatista = sequelize.define('Rescatista', {
+/**
+ * Modelo de los Rescatistas que se almacenan en la base de datos.
+ * @property {number} dni - DNI del Rescatista.
+ * @property {string} nombre - El nombre del rescatista.
+ * @property {string} apellido - El apellido del rescatista.
+ * @property {string} direccion - La direccion del rescatista.
+ * @property {boolean} completed - Estado de la tarea.
+ */
+const Rescatista = db.define('Rescatista', {
     dni: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isInt: {
-            msg: 'El DNI debe ser un número entero'
-          },
-          notEmpty: { msg: 'Este campo No puede estar vacio' },
-          validarDni(value) {
-            if (!value || value.length < 8) {
-              throw new Error('DNI inválido! Debe tener al menos 8 digitos');
-            }
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isInt: {
+          msg: 'El DNI debe ser un número entero'
+        },
+        notEmpty: { 
+          msg: 'Este campo No puede estar vacio' 
+        },
+        validarDni(value) {
+          if (!value || value.length < 8) {
+            throw new Error('DNI inválido! Debe tener al menos 8 digitos.');
+          }
+          if (value.length > 8){
+            throw new Error('DNI inválido! El dni tiene demasiados dígitos.')
           }
         }
+      }
     },
     nombre: {
         type: Sequelize.STRING,

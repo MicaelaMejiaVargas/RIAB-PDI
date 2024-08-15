@@ -11,7 +11,7 @@ const database = new Sequelize(
   }
 );
 
-// Testeamos conexión
+// Testeamos la conexión con la bd
 (async () => {
   try {
     await database.authenticate();
@@ -21,4 +21,4 @@ const database = new Sequelize(
   }
 })();
 
-module.exports = database
+module.exports = database;
