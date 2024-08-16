@@ -29,6 +29,9 @@ const crearMascotas = async (req, res) => {
     const { id, nombre_apodo, raza, color, estado_salud, anio_nacimiento } = req.body
 
     // --- Validaciones Mascotas ---
+    if (!id || id.length < 5) {
+      return res.status(401).json({error: "id inválido"})
+    }
     if (!nombre_apodo || nombre_apodo.length < 2) {
       return res.status(401).json({error: "Nombre-apodo inválido"})
     }
@@ -45,8 +48,9 @@ const crearMascotas = async (req, res) => {
       return res.status(401).json({error: "Número de año de nacimiento inválido"})
     }
 
-    const mascotaNuevo = await mascota.create({ id, nombre_apodo, raza, color, estado_salud, anio_nacimiento });
-    mascotaNuevo.save();
+    const mascotaNuevo = await mascota.create({ 
+      id, nombre_apodo, raza, color, estado_salud, anio_nacimiento
+    });
 
     return res.status(200).json({
       message: "mascota creado!",
