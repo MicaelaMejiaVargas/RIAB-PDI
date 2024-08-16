@@ -26,7 +26,7 @@ const obtenerMascotasId = async (req, res) => {
 
 const crearMascotas = async (req, res) => {
   try {
-    const { nombre_apodo, raza, color, estado_salud, anio_nacimiento } = req.body
+    const { id, nombre_apodo, raza, color, estado_salud, anio_nacimiento } = req.body
 
     // --- Validaciones Mascotas ---
     if (!nombre_apodo || nombre_apodo.length < 2) {
