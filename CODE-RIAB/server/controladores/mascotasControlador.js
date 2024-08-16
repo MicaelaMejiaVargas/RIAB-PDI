@@ -51,7 +51,6 @@ const crearMascotas = async (req, res) => {
     const mascotaNuevo = await mascota.create({ 
       id, nombre_apodo, raza, color, estado_salud, anio_nacimiento
     });
-    mascotaNuevo.save();
 
     return res.status(200).json({
       message: "mascota creado!",
