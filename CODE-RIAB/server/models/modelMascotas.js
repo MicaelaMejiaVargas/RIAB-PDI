@@ -7,11 +7,11 @@ const mascotas = sequelize.define('mascotas', {
     type: Sequelize.INTEGER, //debe ser de caracter entero
     allowNull: false, //el campo no puede estar vacio  en la bd
     primaryKey: true, //es clave primaria
-    autoIncrement: true, //incrementara si no se le asigna un valor
-    validate: {  
-      isInt: true, //tiene que ser entero
-      notNull: { msg: 'No puede estar vacio'} //no puede estar vacio (antes de ingresar a la bd)
-    }
+    autoIncrement: true //incrementara si no se le asigna un valor
+    // validate: {  
+    //   isInt: true, //tiene que ser entero
+    //   notNull: { msg: 'No puede estar vacio'} //no puede estar vacio (antes de ingresar a la bd)
+    // }
   },
 
   nombre_apodo: {

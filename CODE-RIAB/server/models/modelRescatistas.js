@@ -3,6 +3,7 @@ const db = require('../config/db_sequelize');
 
 /**
  * Modelo de los Rescatistas que se almacenan en la base de datos.
+ * @property {number} cod_resca - codigo del Rescatista.
  * @property {number} dni - DNI del Rescatista.
  * @property {string} nombre - El nombre del rescatista.
  * @property {string} apellido - El apellido del rescatista.
@@ -26,7 +27,7 @@ const Rescatista = db.define('Rescatista', {
           throw new Error('Código inválido! Debe tener al menos 4 digitos.');
         }
         if (value.length > 4){
-          throw new Error('Código inválido! El código tiene demasiados dígitos.')
+          throw new Error('Código inválido! El código tiene demasiados dígitos.');
         }
       }
     }
