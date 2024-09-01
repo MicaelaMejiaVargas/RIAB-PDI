@@ -1,5 +1,3 @@
-// const promiseQuery = require('../config/db');
-
 // Importamos modelo de Rescatistas
 const Rescatista = require('../models/modelRescatistas');
 

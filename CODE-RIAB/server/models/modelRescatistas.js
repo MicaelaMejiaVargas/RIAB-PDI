@@ -11,26 +11,27 @@ const db = require('../config/db_sequelize');
  * @property {boolean} completed - Estado de la tarea.
  */
 const Rescatista = db.define('Rescatista', {
-  cod_resca:{
+  codigo_r:{
     type: Sequelize.INTEGER(4),
     primaryKey: true,
     allowNull: false,
-    validate: {
-      isInt: {
-        msg: 'Deben ser numeros enteros. Recuerda que son los numeros que te mandaron al correo!.'
-      },
-      notEmpty: { 
-        msg: 'Este campo No puede estar vacio' 
-      },
-      validar_cod(value) {
-        if (value.length < 4) {
-          throw new Error('Código inválido! Debe tener al menos 4 digitos.');
-        }
-        if (value.length > 4){
-          throw new Error('Código inválido! El código tiene demasiados dígitos.');
-        }
-      }
-    }
+    autoIncrement: true
+    // validate: {
+    //   isInt: {
+    //     msg: 'Deben ser numeros enteros. Recuerda que son los numeros que te mandaron al correo!.'
+    //   },
+    //   notEmpty: { 
+    //     msg: 'Este campo No puede estar vacio' 
+    //   },
+    //   validar_cod(value) {
+    //     if (value.length < 4) {
+    //       throw new Error('Código inválido! Debe tener al menos 4 digitos.');
+    //     }
+    //     if (value.length > 4){
+    //       throw new Error('Código inválido! El código tiene demasiados dígitos.');
+    //     }
+    //   }
+    // }
   },
   dni: {
     type: Sequelize.INTEGER,
@@ -124,6 +125,24 @@ const Rescatista = db.define('Rescatista', {
         }
       }
   },
+  passw: {
+    type: Sequelize.STRING,
+    allowNull:false,
+    validate: {
+      notEmpty: {
+        msg: 'Este campo no puede estar vacío'
+      },
+    }
+  },
+  r_passw: {
+    type: Sequelize.STRING,
+    allowNull:false,
+    validate: {
+      notEmpty: {
+        msg: 'Este campo no puede estar vacío'
+      },
+    }
+  }
 }, {
   timestamps: false
 })
