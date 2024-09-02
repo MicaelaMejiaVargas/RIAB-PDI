@@ -2,12 +2,19 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const port = 3000;
 
 // Confuguración del middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+//borramos Caché
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('Surrogate-Control', 'no-store');
+  next();
+});
 
 // CONECTAMOS LAS RUTAS:
 const rescatistas = require('./rutas/rescatistas');
@@ -30,6 +37,6 @@ app.get('/', (req, res) => {
 });
 
 // Mensaje por consola de que todo anda joya
-app.listen(port, () => {
-  console.log(`Mi aplicacion esta funcionando en http://localhost:${port}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Mi aplicacion esta funcionando en http://localhost:${process.env.PORT || 3000}`);
 })

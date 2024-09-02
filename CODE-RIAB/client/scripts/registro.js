@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('http://localhost:3000/rescatistas', {
+            const response = await fetch('http://localhost:3000/rescatistas/registro', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

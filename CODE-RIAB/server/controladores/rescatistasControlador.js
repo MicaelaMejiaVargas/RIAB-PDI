@@ -137,7 +137,7 @@ const login = async (req,res) => {
     console.log(contraCorrect);
 
     if(!contraCorrect){
-        return res.status(400).json({status: "Error", message: "Error durante el login. Contraseña incorrecta."});
+        return res.status(400).json({status: "Error", message: "Error durante el login."});
     }
 
     return res.status(200).json({

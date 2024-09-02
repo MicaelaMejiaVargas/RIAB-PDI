@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('http://localhost:3000/rescatistas', {
+            const response = await fetch('http://localhost:3000/rescatistas/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,14 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
 
             if (response.ok && data.success) {
-                alert('Inicio de Sesión exitoso: ' + data.message);
+                alert('Inicio de Sesión exitoso! ');
                 form.reset();
-                window.location.href = '../pages/login.html';
+                window.location.href = '../rescatista-pages/index_rescatista.html';
             } else {
-                alert('Error: ' + data.message || 'Error en el registro.');
+                alert('Error: ' + data.message || 'Error al iniciar sesion.');
             }
         } catch (error) {
-            console.error('Error al registrar el rescatista:', error);
+            console.error('Error al iniciar sesion :c ', error);
             document.querySelector('.error').style.display = 'block';
         }
     });
