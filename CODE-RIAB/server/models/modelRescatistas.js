@@ -3,7 +3,7 @@ const db = require('../config/db_sequelize');
 
 /**
  * Modelo de los Rescatistas que se almacenan en la base de datos.
- * @property {number} cod_resca - codigo del Rescatista.
+ * @property {number} codigo_r - codigo del Rescatista.
  * @property {number} dni - DNI del Rescatista.
  * @property {string} nombre - El nombre del rescatista.
  * @property {string} apellido - El apellido del rescatista.
@@ -118,7 +118,6 @@ const Rescatista = db.define('Rescatista', {
       type: Sequelize.STRING,
       allowNull: true,
       validate: {
-        isInt: false,
         isIn: {
           args: [['M', 'F', 'Otro']],
           msg: 'Género inválido: debe ser Masculino, Femenino u Otro'

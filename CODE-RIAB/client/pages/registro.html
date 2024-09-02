@@ -15,31 +15,31 @@
                 <p>Datos Personales:</p>
                 
                 <label for="codigo_r">DNI</label>
-                <input type="number" name="dni" id="dni" placeholder="ingrese su numero de dni">
+                <input type="number" name="dni" id="dni" placeholder="ingrese su numero de dni" required>
                 <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre" placeholder="ingrese su nombre">
+                <input type="text" name="nombre" id="nombre" placeholder="ingrese su nombre" required>
                 <label for="apellido">Apellido</label>
-                <input type="text" name="apellido" id="apellido" placeholder="ingrese su apellido">
+                <input type="text" name="apellido" id="apellido" placeholder="ingrese su apellido" required>
                 <label for="telefono">Teléfono</label>
-                <input type="number" name="telefono" id="telefono" placeholder="ingrese su numero de telefono">
+                <input type="number" name="telefono" id="telefono" placeholder="ingrese su numero de telefono" required>
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="ingrese su email">
+                <input type="email" name="email" id="email" placeholder="ingrese su email" required>
                 <label for="direccion">Dirección</label>
-                <input type="text" name="direccion" id="direccion" placeholder="ingrese su direccion">
+                <input type="text" name="direccion" id="direccion" placeholder="ingrese su direccion" required>
 
                 <p>Género:</p>
                 <label for="genero_f">F</label>
-                <input type="radio" name="genero" id="genero_f" value="F">
+                <input type="radio" name="genero" id="genero_f" value="F" required>
                 <label for="genero_m">M</label>
-                <input type="radio" name="genero" id="genero_m" value="M">
+                <input type="radio" name="genero" id="genero_m" value="M" required>
                 <label for="genero_otro">Otro</label>
-                <input type="radio" name="genero" id="genero_otro" value="Otro">
+                <input type="radio" name="genero" id="genero_otro" value="Otro" required>
 
                 <p>Crea una contraseña válida:</p>
                 <label for="passw">Contraseña</label>
-                <input type="passw" name="passw" id="passw" placeholder="Contraseña">
+                <input type="text" name="passw" id="passw" placeholder="Contraseña">
                 <label for="r_passw">Repetir la contraseña</label>
-                <input type="passw" name="r_passw" id="r_passw" placeholder="repetir contraseña">
+                <input type="text" name="r_passw" id="r_passw" placeholder="repetir contraseña">
                 <p></p>
                 <button type="submit" disabled>Enviar</button>
                 <p class="error esconder" style="display: none;">Error al crear tu cuenta. Intente nuevamente.</p>

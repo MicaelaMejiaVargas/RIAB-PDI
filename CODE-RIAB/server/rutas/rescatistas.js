@@ -5,7 +5,7 @@ const router = express.Router();
 const resController = require('../controladores/rescatistasControlador')
 
 router.get('/', resController.obtenerTodos);
-router.get('/:dni', resController.obtener);
+router.get('/:codigo_r', resController.obtener);
 router.post('/', resController.crear);
 router.put('/:dni', resController.actualizar);
 router.delete('/:dni', resController.borrar);

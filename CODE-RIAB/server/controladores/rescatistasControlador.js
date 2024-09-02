@@ -1,3 +1,4 @@
+const bcryptjs = require('bcryptjs');
 // Importamos modelo de Rescatistas
 const Rescatista = require('../models/modelRescatistas');
 
@@ -13,8 +14,8 @@ const obtenerTodos = async (req, res) => {
 
 const obtener = async (req, res) => {
   try {
-    const { dni } = req.params
-    const resc = await Rescatista.findByPk(dni)
+    const { codigo_r } = req.params
+    const resc = await Rescatista.findByPk(codigo_r)
   
     return res.status(200).json(resc) 
   } catch (error) {
@@ -24,9 +25,8 @@ const obtener = async (req, res) => {
 
 const crear = async (req, res) => {
   try {
-    const {dni, nombre, apellido, telefono, email, direccion, genero } = req.body
+    const {dni, nombre, apellido, telefono, email, direccion, genero, passw, r_passw } = req.body
 
-    // Validaciones - tengo que modifarlo para que esté en models
     if (!dni || dni.length < 8) { 
       return res.status(401).json({error: "DNI inválido"})
     }
@@ -40,25 +40,41 @@ const crear = async (req, res) => {
       return res.status(401).json({error: "Número de Telefono inválido"})
     }
 
+    //buscamos si el rescatista ya existe en la base de datos
+    const existeResc = await Rescatista.findOne({ where: { dni } });
+
+    if (existeResc) {
+      return res.status(400).json({status: "Error", message: "Este Rescatista ya existe"});
+    }
+
+    const hashPassword = await bcryptjs.hash(passw,5);
+    const hashPass2 = await bcryptjs.hash(r_passw,5);
+
     const rescaNuevo = await Rescatista.create({ 
-      dni, nombre, apellido, telefono, email, direccion, genero
+      dni, nombre, apellido, telefono, email, direccion, genero, passw:hashPassword, r_passw:hashPass2
     });
     rescaNuevo.save();
 
+    console.log(rescaNuevo);
+
     return res.status(200).json({
+      success: true,
       message: "Rescatista creado!",
       data: rescaNuevo
     })
 
   } catch (error) {
-    return res.status(500).json({error: "Internal Server Error"})
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      error: "Internal Server Error"})
   }
 }
 
 const actualizar = async (req, res) => {
   try {
     const pasarDni = req.params.dni;
-    const {dni, nombre, apellido, telefono, email, direccion, genero } = req.body;
+    const {dni, nombre, apellido, telefono, email, direccion, genero, passw, r_passw } = req.body;
 
     const buscarResc = await Rescatista.findOne({ where: { dni: pasarDni } });
 
@@ -68,7 +84,7 @@ const actualizar = async (req, res) => {
       });
     }
 
-    const actResc = await buscarResc.update({nombre, apellido, telefono, email, direccion, genero});
+    const actResc = await buscarResc.update({dni, nombre, apellido, telefono, email, direccion, genero, passw, r_passw});
     
     return res.status(200).json({
       message: "Rescatista actualizado!",
