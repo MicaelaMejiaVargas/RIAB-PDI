@@ -11,16 +11,16 @@
     <main>
         <div class="form-contenedor">
             <h1>Iniciar sesión</h1>
-            <p>Ingresá tu usuario y contraseña para acceder</p>
-            <form id="login-form">
-                <label for="user">User</label>
-                <input type="text" name="user" id="user" placeholder="Nombre de usuario">
-
-                <label for="password">Password</label>
-                <input type="text" name="password" id="password" placeholder="Contraseña">
-
+            <p>Ingresá tu n° de DNI y contraseña para acceder</p>
+            <form id="form-login">
+                <label for="user">DNI</label><br>
+                <input type="text" name="dni" id="dni" placeholder="Ingrese su DNI">
+                <br><br>
+                <label for="passw">Contraseña</label><br>
+                <input type="text" name="passw" id="passw" placeholder="Contraseña...">
+                <br><br>
                 <button type="submit">Iniciar Sesión</button>
-                <p class="error esconder">Error al iniciar sesión</p>
+                <p class="error esconder" style="display: none;">Error al iniciar sesión</p>
             </form>
             <p>¿No tenés una cuenta? <a href="./registro.html">Registrate</a> </p>
         </div>

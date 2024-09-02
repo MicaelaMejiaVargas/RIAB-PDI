@@ -114,10 +114,50 @@ const borrar = async (req, res) => {
   }
 }
 
+const login = async (req,res) => {
+  try {
+    const {dni,passw} = req.body
+
+    if (!dni || dni.length < 8) { 
+      return res.status(401).json({error: "DNI inválido"})
+    }
+    if (!passw) {
+      return res.status(401).json({error: "La contraseña no puede estar vacía."})
+    }
+
+    //buscamos si el rescatista ya existe en la base de datos
+    const existeResc = await Rescatista.findOne({ where: { dni } });
+
+    if (!existeResc) {
+      return res.status(400).json({status: "Error", message: "Error durante el login"});
+    }
+
+    const contraCorrect = await bcryptjs.compare(passw, existeResc.passw);
+
+    console.log(contraCorrect);
+
+    if(!contraCorrect){
+        return res.status(400).json({status: "Error", message: "Error durante el login. Contraseña incorrecta."});
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Inicio de sesión exitoso",
+    })
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      error: "Internal Server Error"})
+  }
+}
+
 module.exports = {
   obtenerTodos,
   obtener,
   crear,
   actualizar,
-  borrar
+  borrar,
+  login
 }
