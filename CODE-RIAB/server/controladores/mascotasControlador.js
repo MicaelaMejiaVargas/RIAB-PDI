@@ -35,8 +35,8 @@ const crearMascotas = async (req, res) => {
     if (!nombre_apodo || nombre_apodo.length < 2) {
       return res.status(401).json({error: "Nombre-apodo inválido"})
     }
-    if (!especie || nombr.length < 2) {
-      return res.status(401).json({error: "Nombre-apodo inválido"})
+    if (!especie || especie.length < 2) {
+      return res.status(401).json({error: "especie inválido"})
     }
     if (!raza || raza.length < 2) {
       return res.status(401).json({error: "raza inválido"})
@@ -61,7 +61,8 @@ const crearMascotas = async (req, res) => {
     })
 
   } catch (error) {
-    return res.status(500).json({error: "Internal Server Error"})
+  console.log(error);
+    //   return res.status(500).json({error: "Internal Server Error"})
   }
 }
 

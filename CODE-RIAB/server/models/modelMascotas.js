@@ -8,10 +8,6 @@ const mascotas = sequelize.define('mascotas', {
     allowNull: false, //el campo no puede estar vacio  en la bd
     primaryKey: true, //es clave primaria
     autoIncrement: true //incrementara si no se le asigna un valor
-    // validate: {  
-    //   isInt: true, //tiene que ser entero
-    //   notNull: { msg: 'No puede estar vacio'} //no puede estar vacio (antes de ingresar a la bd)
-    // }
   },
 
   nombre_apodo: {
@@ -22,6 +18,15 @@ const mascotas = sequelize.define('mascotas', {
         if (typeof valorMascota !== 'string') {
           throw new Error('El nombre/apodo debe ser un string');
         }
+      }
+    }
+  },
+  especie: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: 'El campo especie no puede estar vacío'
       }
     }
   },
@@ -55,7 +60,7 @@ const mascotas = sequelize.define('mascotas', {
   },
 
   anio_nacimiento: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTERGER,
     allowNull: false,
     validate: {
       isInt: true,
