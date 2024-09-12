@@ -10,21 +10,21 @@
 <body>
     <main>
         <div class="form-contenedor">
-            <h1 style="text-align: center;">Crea tu cuenta</h1>
+            <h1 style="text-align: center;">Crea el Historial</h1>
             <form id="form-registro" style="width: 200px; margin: 0 auto;">
-                <p>Datos Personales:</p>
+                <h3>Datos de la Mascota:</h3>
                 
-                <label for="codigo_r">DNI</label>
-                <input type="number" name="dni" id="dni" placeholder="ingrese su numero de dni" required>
-                <label for="nombre">Castrado</label>
-                <input type="text" name="nombre" id="nombre" placeholder="" required>
-                <label for="apellido">Apellido</label>
-                <input type="text" name="apellido" id="apellido" placeholder="ingrese su apellido" required>
-                <label for="telefono">Teléfono</label>
-                <input type="number" name="telefono" id="telefono" placeholder="ingrese su numero de telefono" required>
-                <label for="email">Email</label>
+                <label for="nombre"><h4>Castrado</h4></label>
+                <input type="radio" name="castrado" id="castrado" required> Si
+                <input type="radio" name="castrado" id="castrado" required> No 
+                <label for="apellido"><h4>Operado</h4></label>
+                <input type="radio" name="operado" id="operado" required> Si
+                <input type="radio" name="operado" id="operado" required> No 
+                <label for="telefono"><h4>Discapacidad</h4></label>
+                <textarea name="discapacidad" id="discapacidad" placeholder="Escriba aqui . . ."></textarea>
+                <label for="email"><h4></h4></label>
                 <input type="email" name="email" id="email" placeholder="ingrese su email" required>
-                <label for="direccion">Dirección</label>
+                <label for="direccion"><h4></h4></label>
                 <input type="text" name="direccion" id="direccion" placeholder="ingrese su direccion" required>
 
                 <p>Género:</p>

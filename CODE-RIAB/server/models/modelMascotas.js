@@ -60,11 +60,10 @@ const mascotas = sequelize.define('mascotas', {
   },
 
   anio_nacimiento: {
-    type: Sequelize.INTERGER,
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
-      isInt: true,
-      isString: false,
+      isInt: true
     }
   }
 },

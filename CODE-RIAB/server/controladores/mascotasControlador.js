@@ -52,7 +52,7 @@ const crearMascotas = async (req, res) => {
     }
 
     const mascotaNuevo = await mascota.create({ 
-      id, nombre_apodo, raza, color, estado_salud, anio_nacimiento
+      id, nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento
     });
 
     return res.status(200).json({
@@ -70,7 +70,7 @@ const actualizarMascotas = async (req, res) => {
   try {
     const pasarid = req.params.id;
     
-    const {id, nombre_apodo, raza, color,estado_salud, anio_nacimiento } = req.body;
+    const {id, nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento } = req.body;
 
     const buscarMascota = await mascota.findOne({ where: { id: pasarid } });
 
@@ -81,7 +81,7 @@ const actualizarMascotas = async (req, res) => {
     }
 
     const actuMascota = await buscarMascota.update({
-        id, nombre_apodo, raza, color,estado_salud, anio_nacimiento 
+        id, nombre_apodo, especie, raza, color,estado_salud, anio_nacimiento 
     });
     
     return res.status(200).json({
