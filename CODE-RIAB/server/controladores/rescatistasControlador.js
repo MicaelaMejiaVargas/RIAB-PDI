@@ -1,4 +1,10 @@
+//libreria para encriptar
 const bcryptjs = require('bcryptjs');
+//libreria para tokens
+const jsonwebtoken = require('jsonwebtoken');
+//
+const dotenv = require('dotenv');
+
 // Importamos modelo de Rescatistas
 const Rescatista = require('../models/modelRescatistas');
 
@@ -139,6 +145,9 @@ const login = async (req,res) => {
     if(!contraCorrect){
         return res.status(400).json({status: "Error", message: "Error durante el login."});
     }
+
+    //creamos tokens
+    const token = jsonwebtoken.sign({dni:existeResc.dni, }) 
 
     return res.status(200).json({
       success: true,
