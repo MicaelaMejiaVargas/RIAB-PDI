@@ -22,5 +22,36 @@
             </div>
         </div>      
     </header>
+    <main>
+        <div class="form-contenedor">
+            <h1 style="text-align: center;">Crea tu cuenta</h1>
+            <form id="form-registro-mascota" style="width: 200px; margin: 0 auto;">
+                <p>Ingrese los datos de la mascota:</p>
+                
+                <label for="id-mascota">id</label>
+                <input type="number" name="id-mascota" id="id-mascota" placeholder="ingrese el numero de id de la mascota..." required>
+
+                <label for="nombre-apodo">Nombre/Apodo</label>
+                <input type="text" name="nombre-apodo" id="nombre-apodo" placeholder="ingrese el nombre/apodo de su mascota..." required>
+
+                <label for="especie">Especie</label>
+                <input type="text" name="especie" id="especie" placeholder="ingrese el tipo de especie de su mascota..." required>
+
+                <label for="raza">Raza</label>
+                <input type="text" name="raza" id="raza" placeholder="Ingrese el tipo de raza..." required>
+
+                <label for="color">Color</label>
+                <input type="text" name="color" id="color" placeholder="Ingrese el color de la mascota..." required>
+                
+                <label for="estado-salud">estado de salud</label>
+                <input type="text" name="estado-salud" id="estado-salud" placeholder="ingrese su estado-salud" required>
+                
+                <label for="anio-nacimiento">año de nacimiento</label>
+                <input type="number" name="anio-nacimiento" id="anio-nacimiento" placeholder="ingrese su anio-nacimiento" required>
+                
+                <button type="submit">Confirmar registro</button>
+         </div>
+    </main>
+    <script src="altamascotas.js"></script>
 </body>
 </html>
