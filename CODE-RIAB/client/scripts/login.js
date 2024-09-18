@@ -32,7 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok && data.success) {
                 alert('Inicio de Sesión exitoso! ');
                 form.reset();
-                window.location.href = '../rescatista-pages/index_rescatista.html';
+                // window.location.href = '../rescatista-pages/index_rescatista.html';
+                if(data.redirect){
+                    window.location.href = data.redirect;
+                }
             } else {
                 alert('Error: ' + data.message || 'Error al iniciar sesion.');
             }

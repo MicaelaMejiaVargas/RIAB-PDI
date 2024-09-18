@@ -2,11 +2,14 @@
 const bcryptjs = require('bcryptjs');
 //libreria para tokens
 const jsonwebtoken = require('jsonwebtoken');
-//
+//libreria para acceder a las variables de entorno
 const dotenv = require('dotenv');
+
+dotenv.config({path: "./vars/.env"});
 
 // Importamos modelo de Rescatistas
 const Rescatista = require('../models/modelRescatistas');
+const { patch } = require('../rutas/rescatistas');
 
 const obtenerTodos = async (req, res) => {
   // Obtiene todos los usuarios de la base de datos
@@ -147,7 +150,21 @@ const login = async (req,res) => {
     }
 
     //creamos tokens
-    const token = jsonwebtoken.sign({dni:existeResc.dni, }) 
+    const token = jsonwebtoken.sign(
+      {dni:existeResc.dni},
+      process.env.JWT_SECRET,
+      {expiresIn: process.env.JWT_EXPIRATION}
+    ); 
+
+    const cookieOption = {
+      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
+      patch: "/"
+    }
+
+    res.cookie("jwt",token,cookieOption);
+    res.send({status: "ok", message:"Usuario logueado",
+    redirect:"../client/rescatista-pages/index_rescatistas.html"
+    });
 
     return res.status(200).json({
       success: true,
