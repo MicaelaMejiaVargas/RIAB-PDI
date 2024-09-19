@@ -158,17 +158,16 @@ const login = async (req,res) => {
 
     const cookieOption = {
       expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-      patch: "/"
+      httpOnly: true,
+      path: "/"
     }
 
-    res.cookie("jwt",token,cookieOption);
-    res.send({status: "ok", message:"Usuario logueado",
-    redirect:"../client/rescatista-pages/index_rescatistas.html"
-    });
+    // res.cookie("jwt",token,cookieOption);
 
-    return res.status(200).json({
+    return res.status(200).cookie("jwt",token,cookieOption).json({
       success: true,
       message: "Inicio de sesión exitoso",
+
     })
 
   } catch (error) {

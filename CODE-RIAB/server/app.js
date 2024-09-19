@@ -3,19 +3,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-
 // Confuguración del middleware
-app.use(cors());
+app.use(cors({credentials: true}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//borramos Caché
-app.use((req, res, next) => {
-  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
-  res.setHeader('Surrogate-Control', 'no-store');
-  next();
-});
 
 // CONECTAMOS LAS RUTAS:
 const rescatistas = require('./rutas/rescatistas');
