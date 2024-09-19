@@ -3,10 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const cookieParser = require('cookie-parser');
+
 // Confuguración del middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // CONECTAMOS LAS RUTAS:
 const rescatistas = require('./rutas/rescatistas');
