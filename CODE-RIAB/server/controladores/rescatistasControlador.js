@@ -159,12 +159,19 @@ const login = async (req,res) => {
     const cookieOption = {
       expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
       httpOnly: true,
+      secure: false,
       path: "/"
     }
 
     // res.cookie("jwt",token,cookieOption);
 
-    return res.status(200).cookie("jwt",token,cookieOption).json({
+    console.log('Cookie will be set:', token); 
+
+    res.cookie("jwt",token,cookieOption);
+
+    console.log('Cookie set successfully');
+
+    return res.status(200).json({
       success: true,
       message: "Inicio de sesión exitoso",
 
