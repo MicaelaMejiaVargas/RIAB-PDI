@@ -5,9 +5,9 @@
         const isValid = form.checkVisibility();
         submitButton.disabled = !isValid;
     });
-    console.log("32");
+    //console.log("32");
     form.addEventListener('submit', async (event) => {
-        console.log(123)
+        //console.log(123)
         event.preventDefault();
 
         const id = document.getElementById('id-mascota').value;

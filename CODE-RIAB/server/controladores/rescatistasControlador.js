@@ -9,7 +9,6 @@ dotenv.config({path: "./vars/.env"});
 
 // Importamos modelo de Rescatistas
 const Rescatista = require('../models/modelRescatistas');
-const { patch } = require('../rutas/rescatistas');
 
 const obtenerTodos = async (req, res) => {
   // Obtiene todos los usuarios de la base de datos
@@ -156,11 +155,10 @@ const login = async (req,res) => {
       {expiresIn: process.env.JWT_EXPIRATION}
     ); 
 
+    //configuramos cookies
     const cookieOption = {
       expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-      httpOnly: true,
-      secure: false,
-      sameSite: 'strict'
+      httpOnly: true
     }
 
     console.log('Cookie will be set:', token); 
@@ -169,10 +167,13 @@ const login = async (req,res) => {
 
     console.log('Cookie set successfully');
 
-    return res.status(200).json({
+    return res
+    .status(200)
+    .json({
+      status: "ok",
       success: true,
       message: "Inicio de sesión exitoso",
-
+      redirect: "/admin"
     })
 
   } catch (error) {
