@@ -158,12 +158,13 @@ const login = async (req,res) => {
     //configuramos cookies
     const cookieOption = {
       expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-      httpOnly: true
+      httpOnly: true,
+      sameSite: "none"
     }
 
     console.log('Cookie will be set:', token); 
 
-    res.cookie("jwt",token,cookieOption);
+    res.cookie("auth-jwt",token,cookieOption);
 
     console.log('Cookie set successfully');
 
@@ -172,8 +173,7 @@ const login = async (req,res) => {
     .json({
       status: "ok",
       success: true,
-      message: "Inicio de sesión exitoso",
-      redirect: "/admin"
+      message: "Inicio de sesión exitoso"
     })
 
   } catch (error) {

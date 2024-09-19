@@ -31,11 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok && data.success) {
                 alert(data.message);
-                form.reset();
+                // form.reset();
                 // window.location.href = '../rescatista-pages/index_rescatistas.html';
-                if(data.redirect){
-                    window.location.href = data.redirect;
-                }
+        
             } else {
                 alert('Error: ' + data.message || 'Error al iniciar sesion.');
             }
