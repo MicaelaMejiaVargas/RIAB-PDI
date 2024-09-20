@@ -5,6 +5,9 @@ const jsonwebtoken = require('jsonwebtoken');
 //libreria para acceder a las variables de entorno
 const dotenv = require('dotenv');
 
+const cookieParser = require('cookie-parser');
+
+
 dotenv.config({path: "./vars/.env"});
 
 // Importamos modelo de Rescatistas
@@ -157,14 +160,13 @@ const login = async (req,res) => {
 
     //configuramos cookies
     const cookieOption = {
-      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-      httpOnly: true,
-      sameSite: "none"
+      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000)
     }
 
     console.log('Cookie will be set:', token); 
 
-    res.cookie("auth-jwt",token,cookieOption);
+    // res.cookie("auth-jwt",token,cookieOption);
+    res.cookie("auth-jwt","token",cookieOption);
 
     console.log('Cookie set successfully');
 
