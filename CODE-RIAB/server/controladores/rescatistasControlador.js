@@ -1,12 +1,9 @@
 //libreria para encriptar
 const bcryptjs = require('bcryptjs');
 //libreria para tokens
-const jsonwebtoken = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 //libreria para acceder a las variables de entorno
 const dotenv = require('dotenv');
-
-const cookieParser = require('cookie-parser');
-
 
 dotenv.config({path: "./vars/.env"});
 
@@ -152,32 +149,38 @@ const login = async (req,res) => {
     }
 
     //creamos tokens
-    const token = jsonwebtoken.sign(
-      {dni:existeResc.dni},
-      process.env.JWT_SECRET,
-      {expiresIn: process.env.JWT_EXPIRATION}
-    ); 
-
-    //configuramos cookies
-    const cookieOption = {
-      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000)
+    const tokenPayload = {
+      dni: existeResc.dni
     }
+
+    const token = jwt.sign(
+      tokenPayload,
+      process.env.JWT_SECRET,
+      {
+        expiresIn: '1h'
+      }
+    ); 
 
     console.log('Cookie will be set:', token); 
 
-    // res.cookie("auth-jwt",token,cookieOption);
-    res.cookie("auth-jwt","token",cookieOption);
+    // cookies
+    res.cookie('auth-jwt', token, {
+      path: '/',
+      maxAge: 60 * 60 * 1000,
+      secure: false,      
+      sameSite: 'Strict'
+    });
 
     console.log('Cookie set successfully');
 
     return res
     .status(200)
     .json({
-      status: "ok",
+      ok: true,
       success: true,
-      message: "Inicio de sesión exitoso"
-    })
-
+      message: "Inicio de sesión exitoso",
+      token: token
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({

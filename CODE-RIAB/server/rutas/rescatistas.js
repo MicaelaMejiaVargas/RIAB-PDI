@@ -3,7 +3,8 @@ const router = express.Router();
 
 //importamos el controlador
 const resController = require('../controladores/rescatistasControlador');
-const autorizar = require('../middlewares/autorizar');
+
+// const autorizar = require('../middlewares/autorizar');
 
 /**rutas con middleware */
 // router.get('/',autorizar.soloRescatistas, resController.obtenerTodos);

@@ -31,6 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok && data.success) {
                 alert(data.message);
+
+                localStorage.setItem('token', data.token);
+                // localStorage.getItem('token');
+
                 // form.reset();
                 // window.location.href = '../rescatista-pages/index_rescatistas.html';
         

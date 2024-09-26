@@ -3,16 +3,14 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const path = require('path');
 const cookieParser = require('cookie-parser');
 
-// Confuguración del middleware
+// Confuguración de los middlewares
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static("client", {extensions: ["html", "css", "js"]}));
 
 // CONECTAMOS LAS RUTAS:
 const rescatistas = require('./rutas/rescatistas');
