@@ -2,7 +2,7 @@
     const submitButton = form.querySelector('button[type="submit"]');
 
     form.addEventListener('input', () => {
-        const isValid = form.checkVisibility();
+        const isValid = form.checkValidity();
         submitButton.disabled = !isValid;
     });
     //console.log("32");
@@ -10,7 +10,6 @@
         //console.log(123)
         event.preventDefault();
 
-        const id = document.getElementById('id-mascota').value;
         const nombreApodo = document.getElementById('nombre-apodo').value;
         const especie = document.getElementById('especie').value;
         const raza = document.getElementById('raza').value;
@@ -19,13 +18,12 @@
         const anioNacimiento = document.getElementById('anio-nacimiento').value;
 
         const mascotasdata = {
-            id,
-            nombreApodo,
+            nombre_apodo: nombreApodo,
             especie,
             raza,
             color,
-            estadoSalud,
-            anioNacimiento
+            estado_salud: estadoSalud,
+            anio_nacimiento: anioNacimiento
         };
 
         try {
@@ -43,12 +41,12 @@
             if (response.ok && data.success) {
                 alert('Registro exitoso: ' + data.message);
                 form.reset();
-                window.location.href = '../index.html';
+                window.location.href = '../rescatista-pages/index_rescatistas.html';
             } else {
                 alert('Error: ' + data.message || 'Error en el registro.');
             }
         } catch (error) {
             console.error('Error al registrar la mascota:', error);
-            document.querySelector('.error').style.display = 'block';
+            // document.querySelector('.error').style.display = 'block';
         }
     });

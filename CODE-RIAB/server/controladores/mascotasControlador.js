@@ -2,29 +2,29 @@
 const mascota = require('../models/modelMascotas');
 
 // funcion de validacion
-const validarMascota = (data) => {
-  const { nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento } = data;
+// const validarMascota = (data) => {
+//   const { nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento } = data;
   
-  if (!nombre_apodo || nombre_apodo.length < 2 || nombre_apodo.length > 50 || !/^[a-zA-Z\s]+$/.test(nombre_apodo)) {
-    return "Nombre-apodo invalido. Solo se permiten letras.";
-  }
-  if (!especie || especie.length < 2 || especie.length > 50 || !/^[a-zA-Z\s]+$/.test(especie)) {
-    return "Especie invalida. Solo se permiten letras.";
-  }
-  if (!raza || raza.length < 2 || raza.length > 50 || !/^[a-zA-Z\s]+$/.test(raza)) {
-    return "Raza invalida. Solo se permiten letras.";
-  }
-  if (!color || color.length < 2 || color.length > 30 || !/^[a-zA-Z\s]+$/.test(color)) {
-    return "Color invalido. Solo se permiten letras.";
-  }
-  if (!estado_salud || estado_salud.length < 5 || !/^[a-zA-Z\s]+$/.test(estado_salud)) {
-    return "Estado de salud invalido. Solo se permiten letras y debe tener al menos 5 caracteres.";
-  }
-  if (!anio_nacimiento || isNaN(anio_nacimiento) || anio_nacimiento < 1900 || anio_nacimiento > new Date().getFullYear()) {
-    return "Anio de nacimiento invalido.";
-  }
-  return null; // No hay errores
-};
+//   if (!nombre_apodo || nombre_apodo.length < 2 || nombre_apodo.length > 50 || !/^[a-zA-Z\s]+$/.test(nombre_apodo)) {
+//     return "Nombre-apodo invalido. Solo se permiten letras.";
+//   }
+//   if (!especie || especie.length < 2 || especie.length > 50 || !/^[a-zA-Z\s]+$/.test(especie)) {
+//     return "Especie invalida. Solo se permiten letras.";
+//   }
+//   if (!raza || raza.length < 2 || raza.length > 50 || !/^[a-zA-Z\s]+$/.test(raza)) {
+//     return "Raza invalida. Solo se permiten letras.";
+//   }
+//   if (!color || color.length < 2 || color.length > 30 || !/^[a-zA-Z\s]+$/.test(color)) {
+//     return "Color invalido. Solo se permiten letras.";
+//   }
+//   if (!estado_salud || estado_salud.length < 5 || !/^[a-zA-Z\s]+$/.test(estado_salud)) {
+//     return "Estado de salud invalido. Solo se permiten letras y debe tener al menos 5 caracteres.";
+//   }
+//   if (!anio_nacimiento || isNaN(anio_nacimiento) || anio_nacimiento < 1900 || anio_nacimiento > new Date().getFullYear()) {
+//     return "Anio de nacimiento invalido.";
+//   }
+//   return null; // No hay errores
+// };
 
 const obtenerMascotas = async (req, res) => {
   try {
@@ -52,25 +52,32 @@ const obtenerMascotasId = async (req, res) => {
 
 const crearMascotas = async (req, res) => {
   try {
-    const { especie, nombre_apodo, raza, color, estado_salud, anio_nacimiento } = req.body;
+    const {nombre_apodo, especie,  raza, color, estado_salud, anio_nacimiento } = req.body;
     
-    const error = validarMascota(req.body);
-    if (error) {
-      return res.status(400).json({ error });
-    }
+    // const error = validarMascota(req.body);
+    // if (error) {
+    //   return res.status(400).json({ error });
+    // }
 
     const mascotaNuevo = await mascota.create({ 
       nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento 
     });
 
+    console.log(mascotaNuevo);
+
+    mascotaNuevo.save();
+
     return res.status(201).json({
+      success: true,
       message: "Mascota creada!",
       data: mascotaNuevo
     });
 
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Internal Server Error" });
+    return console.error(error);
+    // return res.status(500).json({ 
+    //   success: false,
+    //   error: "Internal Server Error" });
   }
 };
 
