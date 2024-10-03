@@ -2,14 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 // Importamos controlador
-const controladorMascota= require('../controladores/mascotasControlador')
+const controladorMascota = require('../controladores/mascotasControlador');
 
-// localhost:3000/mascotas/
+// Definición de rutas
 router.get('/', controladorMascota.obtenerMascotas);
-router.get("/:id", controladorMascota.obtenerMascotasId);
-router.post('/registro', controladorMascota.crearMascotas);
+router.get('/:id', controladorMascota.obtenerMascotasId);
+router.post('/', controladorMascota.crearMascotas); // Cambiado a la raíz para crear mascotas
 router.put('/:id', controladorMascota.actualizarMascotas);
 router.delete('/:id', controladorMascota.borrarMascotas);
 
-
-module.exports = router
+module.exports = router;

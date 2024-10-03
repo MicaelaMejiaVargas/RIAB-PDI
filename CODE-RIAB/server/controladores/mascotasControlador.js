@@ -1,30 +1,52 @@
 // Importamos modelo de mascotas
 const mascota = require('../models/modelMascotas');
 
-// funcion de validacion
-// const validarMascota = (data) => {
-//   const { nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento } = data;
-  
-//   if (!nombre_apodo || nombre_apodo.length < 2 || nombre_apodo.length > 50 || !/^[a-zA-Z\s]+$/.test(nombre_apodo)) {
-//     return "Nombre-apodo invalido. Solo se permiten letras.";
-//   }
-//   if (!especie || especie.length < 2 || especie.length > 50 || !/^[a-zA-Z\s]+$/.test(especie)) {
-//     return "Especie invalida. Solo se permiten letras.";
-//   }
-//   if (!raza || raza.length < 2 || raza.length > 50 || !/^[a-zA-Z\s]+$/.test(raza)) {
-//     return "Raza invalida. Solo se permiten letras.";
-//   }
-//   if (!color || color.length < 2 || color.length > 30 || !/^[a-zA-Z\s]+$/.test(color)) {
-//     return "Color invalido. Solo se permiten letras.";
-//   }
-//   if (!estado_salud || estado_salud.length < 5 || !/^[a-zA-Z\s]+$/.test(estado_salud)) {
-//     return "Estado de salud invalido. Solo se permiten letras y debe tener al menos 5 caracteres.";
-//   }
-//   if (!anio_nacimiento || isNaN(anio_nacimiento) || anio_nacimiento < 1900 || anio_nacimiento > new Date().getFullYear()) {
-//     return "Anio de nacimiento invalido.";
-//   }
-//   return null; // No hay errores
-// };
+// Listas de opciones permitidas
+const especiesPermitidas = ['perro', 'gato', 'loro']; // Ejemplo
+const coloresPermitidos = ['negro', 'blanco', 'marrón', 'gris'];
+const razasPermitidas = ['labrador', 'bulldog', 'persa']; // Ejemplo
+
+// Función de validación
+const validarMascota = (data) => {
+  const { nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento } = data;
+
+  // Validación del nombre_apodo
+  if (!nombre_apodo || nombre_apodo.length < 2 || nombre_apodo.length > 50 || !/^[a-zA-Z\s]+$/.test(nombre_apodo)) {
+    return "Nombre-apodo invalido. Solo se permiten letras.";
+  }
+
+  // Validación de especie
+  if (!especiesPermitidas.includes(especie)) {
+    return "Especie invalida. Debe ser una de las opciones permitidas.";
+  }
+
+  // Validación de raza
+  if (!razasPermitidas.includes(raza)) {
+    return "Raza invalida. Debe ser una de las opciones permitidas.";
+  }
+
+  // Validación de color
+  if (!coloresPermitidos.includes(color)) {
+    return "Color invalido. Debe ser uno de los colores permitidos.";
+  }
+
+  // Validación del estado de salud
+  if (!estado_salud || estado_salud.length < 5) {
+    return "Estado de salud invalido. Debe tener al menos 5 caracteres.";
+  }
+
+  // Validación del año de nacimiento
+  if (!anio_nacimiento || isNaN(anio_nacimiento) || 
+      ![2000, 2001, 2002, 2003, 2004, 2005, 
+        2006, 2007, 2008, 2009, 2010, 2011,
+        2012, 2013, 2014, 2015, 2016, 
+        2017, 2018, 2019, 2020, 2021, 2022, 2023, 
+        2024].includes(anio_nacimiento)) {
+    return "Anio de nacimiento invalido. Debe ser uno de los años permitidos.";
+  }
+
+  return null; // No hay errores
+};
 
 const obtenerMascotas = async (req, res) => {
   try {
@@ -33,7 +55,7 @@ const obtenerMascotas = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ err: "Internal Server Error" });
   }
-}
+};
 
 const obtenerMascotasId = async (req, res) => {
   try {
@@ -43,48 +65,36 @@ const obtenerMascotasId = async (req, res) => {
     if (!masc) {
       return res.status(404).json({ message: "Mascota no encontrada." });
     }
-  
+
     return res.status(200).json(masc);
   } catch (error) {
     return res.status(500).json({ error: "Internal Server Error" });
   }
-}
+};
 
 const crearMascotas = async (req, res) => {
   try {
-    const {nombre_apodo, especie,  raza, color, estado_salud, anio_nacimiento } = req.body;
+    const error = validarMascota(req.body);
+    if (error) {
+      return res.status(400).json({ error });
+    }
+
+    const mascotaNuevo = await mascota.create(req.body);
     
-    // const error = validarMascota(req.body);
-    // if (error) {
-    //   return res.status(400).json({ error });
-    // }
-
-    const mascotaNuevo = await mascota.create({ 
-      nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento 
-    });
-
-    console.log(mascotaNuevo);
-
-    mascotaNuevo.save();
-
     return res.status(201).json({
       success: true,
       message: "Mascota creada!",
       data: mascotaNuevo
     });
-
   } catch (error) {
-    return console.error(error);
-    // return res.status(500).json({ 
-    //   success: false,
-    //   error: "Internal Server Error" });
+    console.error(error);
+    return res.status(500).json({ error: "Error al crear la mascota." });
   }
 };
 
 const actualizarMascotas = async (req, res) => {
   try {
     const pasarid = req.params.id;
-    const { nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento } = req.body;
 
     const error = validarMascota(req.body);
     if (error) {
@@ -97,9 +107,7 @@ const actualizarMascotas = async (req, res) => {
       return res.status(404).json({ message: "Mascota no encontrada." });
     }
 
-    const actuMascota = await buscarMascota.update({
-      nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento 
-    });
+    const actuMascota = await buscarMascota.update(req.body);
     
     return res.status(200).json({
       message: "Mascota actualizada con éxito!",
@@ -128,7 +136,7 @@ const borrarMascotas = async (req, res) => {
     console.error(error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-}
+};
 
 module.exports = {
   obtenerMascotas,
@@ -136,4 +144,4 @@ module.exports = {
   crearMascotas,
   actualizarMascotas,
   borrarMascotas
-}
+};
