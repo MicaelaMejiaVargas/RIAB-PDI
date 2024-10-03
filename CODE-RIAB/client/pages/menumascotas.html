@@ -23,12 +23,13 @@
     </header>
     <main class="container mt-4">
         <h1 class="text-center">Crea mascota</h1>
-        <form id="form-registro-mascota" style="max-width: 400px; margin: 0 auto;" class="bg-light p-4 rounded shadow">
+        <form id="form-registro-mascota" style="max-width: 400px; margin: 0 auto;" class="bg-light p-4 rounded shadow needs-validation" novalidate>
             <p>Ingrese los datos de la mascota:</p>
             
             <div class="mb-3">
                 <label for="nombre-apodo" class="form-label">Nombre/Apodo</label>
                 <input type="text" class="form-control" name="nombre-apodo" id="nombre-apodo" placeholder="Ingrese el nombre/apodo de su mascota..." required>
+                <div class="invalid-feedback">Por favor ingrese un nombre/apodo válido.</div>
             </div>
 
             <div class="mb-3">
@@ -39,6 +40,7 @@
                     <option value="gato">Gato</option>
                     <option value="loro">Loro</option>
                 </select>
+                <div class="invalid-feedback">Por favor seleccione una especie.</div>
             </div>
 
             <div class="mb-3">
@@ -49,6 +51,7 @@
                     <option value="bulldog">Bulldog</option>
                     <option value="persa">Persa</option>
                 </select>
+                <div class="invalid-feedback">Por favor seleccione una raza.</div>
             </div>
 
             <div class="mb-3">
@@ -60,11 +63,7 @@
                     <option value="marrón">Marrón</option>
                     <option value="gris">Gris</option>
                 </select>
-            </div>
-            
-            <div class="mb-3">
-                <label for="estado-salud" class="form-label">Estado de Salud</label>
-                <input type="text" class="form-control" name="estado-salud" id="estado-salud" placeholder="Ingrese su estado de salud..." required>
+                <div class="invalid-feedback">Por favor seleccione un color.</div>
             </div>
             
             <div class="mb-3">
@@ -74,7 +73,7 @@
                     <script>
                         const yearSelect = document.getElementById('anio-nacimiento');
                         const currentYear = new Date().getFullYear();
-                        for (let year = 2000; year <= currentYear + 1; year++) {
+                        for (let year = 2000; year <= currentYear ; year++) {
                             const option = document.createElement('option');
                             option.value = year;
                             option.textContent = year;
@@ -82,6 +81,7 @@
                         }
                     </script>
                 </select>
+                <div class="invalid-feedback">Por favor seleccione un año de nacimiento.</div>
             </div>
             
             <button type="submit" class="btn btn-primary">Confirmar registro</button>

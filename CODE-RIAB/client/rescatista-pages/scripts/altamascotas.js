@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
+        // Recoger datos del formulario
         const nombreApodo = document.getElementById('nombre-apodo').value;
         const especie = document.getElementById('especie').value;
         const raza = document.getElementById('raza').value;
         const color = document.getElementById('color').value;
-        const estadoSalud = document.getElementById('estado-salud').value;
         const anioNacimiento = document.getElementById('anio-nacimiento').value;
 
         const mascotasData = {
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
             especie,
             raza,
             color,
-            estado_salud: estadoSalud,
             anio_nacimiento: anioNacimiento
         };
 
@@ -44,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 form.reset();
                 window.location.href = '../rescatista-pages/index_rescatistas.html'; // Redirigir a otra página
             } else {
-                alert('Error: ' + data.message || 'Error en el registro.');
+                alert('Error: ' + (data.message || 'Error en el registro.'));
             }
         } catch (error) {
             console.error('Error al registrar la mascota:', error);

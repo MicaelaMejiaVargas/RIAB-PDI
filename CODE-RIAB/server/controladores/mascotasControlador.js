@@ -8,7 +8,7 @@ const razasPermitidas = ['labrador', 'bulldog', 'persa']; // Ejemplo
 
 // Función de validación
 const validarMascota = (data) => {
-  const { nombre_apodo, especie, raza, color, estado_salud, anio_nacimiento } = data;
+  const { nombre_apodo, especie, raza, color, anio_nacimiento } = data;
 
   // Validación del nombre_apodo
   if (!nombre_apodo || nombre_apodo.length < 2 || nombre_apodo.length > 50 || !/^[a-zA-Z\s]+$/.test(nombre_apodo)) {
@@ -28,11 +28,6 @@ const validarMascota = (data) => {
   // Validación de color
   if (!coloresPermitidos.includes(color)) {
     return "Color invalido. Debe ser uno de los colores permitidos.";
-  }
-
-  // Validación del estado de salud
-  if (!estado_salud || estado_salud.length < 5) {
-    return "Estado de salud invalido. Debe tener al menos 5 caracteres.";
   }
 
   // Validación del año de nacimiento

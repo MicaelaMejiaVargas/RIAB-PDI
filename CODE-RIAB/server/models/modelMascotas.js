@@ -62,18 +62,6 @@ const mascotas = sequelize.define('mascotas', {
     }
   },
 
-  estado_salud: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      isString: function(valorMascotaSalud) {
-        if (typeof valorMascotaSalud !== 'string') {
-          throw new Error('Error, el dato ingresado no es de tipo string');
-        }
-      }
-    }
-  },
-
   anio_nacimiento: {
     type: DataTypes.INTEGER,
     allowNull: false,
