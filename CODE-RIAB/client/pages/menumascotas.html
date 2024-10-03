@@ -7,7 +7,6 @@
     <title>Mascotas</title>
 </head>
 <body>
-    <p>ESTAS EN LA SECCION DE MASCOTAS</p>
     <header>
         <div class="text-start">
             <p class="fs-1">RIAB</p>
@@ -22,39 +21,76 @@
             </div>
         </div>      
     </header>
-    <main>
-        <div class="form-contenedor">
-            <h1 style="text-align: center;">Crea mascota</h1>
-            <form id="form-registro-mascota" style="width: 200px; margin: 0 auto;">
-                <p>Ingrese los datos de la mascota:</p>
-                
-                <!-- <label for="id-mascota">id</label> -->
-                <!-- <input type="number" name="id-mascota" id="id-mascota" placeholder="ingrese el numero de id de la mascota..." required>
- -->
-                <!-- <label for="foto">Foto de la Mascota</label>
-                <input type="file" name="image"> -->
+    <main class="container mt-4">
+        <h1 class="text-center">Crea mascota</h1>
+        <form id="form-registro-mascota" style="max-width: 400px; margin: 0 auto;" class="bg-light p-4 rounded shadow">
+            <p>Ingrese los datos de la mascota:</p>
+            
+            <div class="mb-3">
+                <label for="nombre-apodo" class="form-label">Nombre/Apodo</label>
+                <input type="text" class="form-control" name="nombre-apodo" id="nombre-apodo" placeholder="Ingrese el nombre/apodo de su mascota..." required>
+            </div>
 
-                <label for="nombre-apodo">Nombre/Apodo</label>
-                <input type="text" name="nombre-apodo" id="nombre-apodo" placeholder="ingrese el nombre/apodo de su mascota..." required>
+            <div class="mb-3">
+                <label for="especie" class="form-label">Especie</label>
+                <select class="form-select" name="especie" id="especie" required>
+                    <option value="" disabled selected>Seleccione una especie...</option>
+                    <option value="perro">Perro</option>
+                    <option value="gato">Gato</option>
+                    <option value="loro">Loro</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </select>
+            </div>
 
-                <label for="especie">Especie</label>
-                <input type="text" name="especie" id="especie" placeholder="ingrese el tipo de especie de su mascota..." required>
+            <div class="mb-3">
+                <label for="raza" class="form-label">Raza</label>
+                <input type="text" class="form-control" name="raza" id="raza" placeholder="Ingrese el tipo de raza..." required>
+            </div>
 
-                <label for="raza">Raza</label>
-                <input type="text" name="raza" id="raza" placeholder="Ingrese el tipo de raza..." required>
-
-                <label for="color">Color</label>
-                <input type="text" name="color" id="color" placeholder="Ingrese el color de la mascota..." required>
-                
-                <label for="estado-salud">estado de salud</label>
-                <input type="text" name="estado-salud" id="estado-salud" placeholder="ingrese su estado-salud" required>
-                
-                <label for="anio-nacimiento">año de nacimiento</label>
-                <input type="number" name="anio-nacimiento" id="anio-nacimiento" placeholder="ingrese su anio-nacimiento" required>
-                
-                <button type="submit">Confirmar registro</button>
-            </form>
-         </div>
+            <div class="mb-3">
+                <label for="color" class="form-label">Color</label>
+                <input type="text" class="form-control" name="color" id="color" placeholder="Ingrese el color de la mascota..." required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="estado-salud" class="form-label">Estado de Salud</label>
+                <input type="text" class="form-control" name="estado-salud" id="estado-salud" placeholder="Ingrese su estado de salud..." required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="anio-nacimiento" class="form-label">Año de Nacimiento</label>
+                <select class="form-select" name="anio-nacimiento" id="anio-nacimiento" required>
+                    <option value="" disabled selected>Seleccione un año...</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                    <option value="2003">2003</option>
+                    <option value="2004">2004</option>
+                    <option value="2005">2005</option>
+                    <option value="2006">2006</option>
+                    <option value="2007">2007</option>
+                    <option value="2008">2008</option>
+                    <option value="2009">2009</option>
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Confirmar registro</button>
+        </form>
     </main>
     <script src="../rescatista-pages/scripts/altamascotas.js"></script>
 </body>
