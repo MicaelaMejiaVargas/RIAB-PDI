@@ -38,18 +38,28 @@
                     <option value="perro">Perro</option>
                     <option value="gato">Gato</option>
                     <option value="loro">Loro</option>
-                    <!-- Agrega más opciones según sea necesario -->
                 </select>
             </div>
 
             <div class="mb-3">
                 <label for="raza" class="form-label">Raza</label>
-                <input type="text" class="form-control" name="raza" id="raza" placeholder="Ingrese el tipo de raza..." required>
+                <select class="form-select" name="raza" id="raza" required>
+                    <option value="" disabled selected>Seleccione una raza...</option>
+                    <option value="labrador">Labrador</option>
+                    <option value="bulldog">Bulldog</option>
+                    <option value="persa">Persa</option>
+                </select>
             </div>
 
             <div class="mb-3">
                 <label for="color" class="form-label">Color</label>
-                <input type="text" class="form-control" name="color" id="color" placeholder="Ingrese el color de la mascota..." required>
+                <select class="form-select" name="color" id="color" required>
+                    <option value="" disabled selected>Seleccione un color...</option>
+                    <option value="negro">Negro</option>
+                    <option value="blanco">Blanco</option>
+                    <option value="marrón">Marrón</option>
+                    <option value="gris">Gris</option>
+                </select>
             </div>
             
             <div class="mb-3">
@@ -61,31 +71,16 @@
                 <label for="anio-nacimiento" class="form-label">Año de Nacimiento</label>
                 <select class="form-select" name="anio-nacimiento" id="anio-nacimiento" required>
                     <option value="" disabled selected>Seleccione un año...</option>
-                    <option value="2000">2000</option>
-                    <option value="2001">2001</option>
-                    <option value="2002">2002</option>
-                    <option value="2003">2003</option>
-                    <option value="2004">2004</option>
-                    <option value="2005">2005</option>
-                    <option value="2006">2006</option>
-                    <option value="2007">2007</option>
-                    <option value="2008">2008</option>
-                    <option value="2009">2009</option>
-                    <option value="2010">2010</option>
-                    <option value="2011">2011</option>
-                    <option value="2012">2012</option>
-                    <option value="2013">2013</option>
-                    <option value="2014">2014</option>
-                    <option value="2015">2015</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
+                    <script>
+                        const yearSelect = document.getElementById('anio-nacimiento');
+                        const currentYear = new Date().getFullYear();
+                        for (let year = 2000; year <= currentYear + 1; year++) {
+                            const option = document.createElement('option');
+                            option.value = year;
+                            option.textContent = year;
+                            yearSelect.appendChild(option);
+                        }
+                    </script>
                 </select>
             </div>
             

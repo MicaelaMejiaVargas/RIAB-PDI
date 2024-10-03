@@ -1,49 +1,54 @@
-const form = document.getElementById('form-registro-mascota');
-const submitButton = form.querySelector('button[type="submit"]');
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('form-registro-mascota');
+    const submitButton = form.querySelector('button[type="submit"]');
 
-form.addEventListener('input', () => {
-    const isValid = form.checkValidity();
-    submitButton.disabled = !isValid;
-});
+    // Habilitar/deshabilitar el botón de envío basado en la validez del formulario
+    form.addEventListener('input', () => {
+        const isValid = form.checkValidity();
+        submitButton.disabled = !isValid;
+    });
 
-form.addEventListener('submit', async (event) => {
-    event.preventDefault();
+    // Manejar el envío del formulario
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-    const nombreApodo = document.getElementById('nombre-apodo').value;
-    const especie = document.getElementById('especie').value;
-    const raza = document.getElementById('raza').value;
-    const color = document.getElementById('color').value;
-    const estadoSalud = document.getElementById('estado-salud').value;
-    const anioNacimiento = document.getElementById('anio-nacimiento').value;
+        const nombreApodo = document.getElementById('nombre-apodo').value;
+        const especie = document.getElementById('especie').value;
+        const raza = document.getElementById('raza').value;
+        const color = document.getElementById('color').value;
+        const estadoSalud = document.getElementById('estado-salud').value;
+        const anioNacimiento = document.getElementById('anio-nacimiento').value;
 
-    const mascotasdata = {
-        nombre_apodo: nombreApodo,
-        especie,
-        raza,
-        color,
-        estado_salud: estadoSalud,
-        anio_nacimiento: anioNacimiento
-    };
+        const mascotasData = {
+            nombre_apodo: nombreApodo,
+            especie,
+            raza,
+            color,
+            estado_salud: estadoSalud,
+            anio_nacimiento: anioNacimiento
+        };
 
-    try {
-        const response = await fetch('http://localhost:3000/mascotas/registro', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(mascotasdata),
-        });
+        try {
+            const response = await fetch('http://localhost:3000/mascotas/registro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(mascotasData),
+            });
 
-        const data = await response.json();
+            const data = await response.json();
 
-        if (response.ok && data.success) {
-            alert('Registro exitoso: ' + data.message);
-            form.reset();
-            window.location.href = '../rescatista-pages/index_rescatistas.html';
-        } else {
-            alert('Error: ' + (data.message || 'Error en el registro.'));
+            if (response.ok && data.success) {
+                alert('Registro exitoso: ' + data.message);
+                form.reset();
+                window.location.href = '../rescatista-pages/index_rescatistas.html'; // Redirigir a otra página
+            } else {
+                alert('Error: ' + data.message || 'Error en el registro.');
+            }
+        } catch (error) {
+            console.error('Error al registrar la mascota:', error);
+            alert('Error en el registro. Por favor, inténtelo de nuevo más tarde.');
         }
-    } catch (error) {
-        console.error('Error al registrar la mascota:', error);
-    }
+    });
 });
