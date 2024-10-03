@@ -118,11 +118,11 @@ const Rescatista = db.define('rescatistas', {
     unique: true,
     allowNull: false,
     validate: {
-      isEmail: {
-        msg: 'El correo electrónico no es válido'
-      },
       notEmpty: {
         msg: 'Este campo no puede estar vacío'
+      },
+      isEmail: {
+        msg: 'El correo electrónico no es válido'
       }
     }
   },
@@ -137,9 +137,19 @@ const Rescatista = db.define('rescatistas', {
         args: [8, 100],
         msg: 'La contraseña debe tener al menos 8 caracteres'
       },
-      is: {
-        args: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/,
-        msg: 'La contraseña debe contener al menos una mayúscula, una minúscula, un número y un carácter especial'
+      validaPassw(valor) {
+        if (!/[A-Z]/.test(valor)) {
+          throw new Error('La contraseña debe contener al menos una letra mayúscula');
+        }
+        if (!/[a-z]/.test(valor)) {
+          throw new Error('La contraseña debe contener al menos una letra minúscula');
+        }
+        if (!/\d/.test(valor)) {
+          throw new Error('La contraseña debe contener al menos un número');
+        }
+        if (!/[!@#$%^&*.,:;?+=\-*/=%&^_~|\\()[\]{}"']/.test(valor)) {
+          throw new Error('La contraseña debe contener al menos un carácter especial');
+        }
       }
     }
   }
