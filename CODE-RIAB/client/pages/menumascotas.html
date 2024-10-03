@@ -28,9 +28,12 @@
             
             <div class="mb-3">
                 <label for="nombre-apodo" class="form-label">Nombre/Apodo</label>
-                <input type="text" class="form-control" name="nombre-apodo" id="nombre-apodo" placeholder="Ingrese el nombre/apodo de su mascota..." required>
-                <div class="invalid-feedback">Por favor ingrese un nombre/apodo válido.</div>
+                <input type="text" class="form-control" name="nombre-apodo" id="nombre-apodo" 
+                       placeholder="Ingrese el nombre/apodo de su mascota..." 
+                       pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios." required>
+                <div class="invalid-feedback">Ingrese un nombre/apodo válido (solo letras y espacios).</div>
             </div>
+            
 
             <div class="mb-3">
                 <label for="especie" class="form-label">Especie</label>

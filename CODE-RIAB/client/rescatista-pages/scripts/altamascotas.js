@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('input', () => {
         const isValid = form.checkValidity();
         submitButton.disabled = !isValid;
+
+        // Mostrar/ocultar mensajes de error
+        Array.from(form.elements).forEach(input => {
+            if (!input.checkValidity()) {
+                input.classList.add('is-invalid');
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        });
     });
 
     // Manejar el envío del formulario
@@ -28,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('http://localhost:3000/mascotas/registro', {
+            const response = await fetch('http://localhost:3000/mascotas/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

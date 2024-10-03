@@ -7,7 +7,7 @@ const controladorMascota = require('../controladores/mascotasControlador');
 // Definición de rutas
 router.get('/', controladorMascota.obtenerMascotas);
 router.get('/:id', controladorMascota.obtenerMascotasId);
-router.post('/registro', controladorMascota.crearMascotas); 
+router.post('/', controladorMascota.crearMascotas); 
 router.put('/:id', controladorMascota.actualizarMascotas);
 router.delete('/:id', controladorMascota.borrarMascotas);
 

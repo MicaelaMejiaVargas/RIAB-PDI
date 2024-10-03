@@ -77,7 +77,7 @@ const mascotas = sequelize.define('mascotas', {
           2017, 2018, 2019, 2020, 2021, 2022, 2023,
           2024
         ]],
-        msg: 'El año de nacimiento debe ser uno de los siguientes: 2000-2005, 2006-2011, 2011-2016, 2017-2023, 2024.'
+        msg: 'El año de nacimiento debe estar entre el año 2000 al 2024.'
       }
     }
   }
