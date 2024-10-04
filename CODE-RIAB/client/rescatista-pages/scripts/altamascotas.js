@@ -1,52 +1,65 @@
+document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form-registro-mascota');
     const submitButton = form.querySelector('button[type="submit"]');
 
+    // Habilitar/deshabilitar el botón de envío basado en la validez del formulario
     form.addEventListener('input', () => {
         const isValid = form.checkValidity();
         submitButton.disabled = !isValid;
+
+        // Mostrar/ocultar mensajes de error
+        Array.from(form.elements).forEach(input => {
+            if (!input.checkValidity()) {
+                input.classList.add('is-invalid');
+            } else {
+                input.classList.remove('is-invalid');
+            }
+        });
     });
-    //console.log("32");
+
+    // Manejar el envío del formulario
     form.addEventListener('submit', async (event) => {
-        //console.log(123)
         event.preventDefault();
 
+        // Recoger datos del formulario
         const nombreApodo = document.getElementById('nombre-apodo').value;
         const especie = document.getElementById('especie').value;
         const raza = document.getElementById('raza').value;
         const color = document.getElementById('color').value;
-        const estadoSalud = document.getElementById('estado-salud').value;
         const anioNacimiento = document.getElementById('anio-nacimiento').value;
 
-        const mascotasdata = {
+        // Asegurarse de que anioNacimiento es un número y no un rango
+        const [startYear, endYear] = anioNacimiento.split('-').map(Number);
+
+        const mascotasData = {
             nombre_apodo: nombreApodo,
             especie,
             raza,
             color,
-            estado_salud: estadoSalud,
-            anio_nacimiento: anioNacimiento
+            anio_nacimiento: startYear // Guardamos el año de inicio
         };
 
         try {
-            const response = await fetch('http://localhost:3000/mascotas/registro', {
+            const response = await fetch('http://localhost:3000/mascotas', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(mascotasdata),
+                body: JSON.stringify(mascotasData),
             });
-            console.log(response);
 
             const data = await response.json();
 
             if (response.ok && data.success) {
                 alert('Registro exitoso: ' + data.message);
                 form.reset();
-                window.location.href = '../rescatista-pages/index_rescatistas.html';
+                window.location.href = '../pages/historial.html'; 
             } else {
-                alert('Error: ' + data.message || 'Error en el registro.');
+                alert('Error: ' + (data.message || 'Error en el registro.'));
             }
         } catch (error) {
             console.error('Error al registrar la mascota:', error);
-            // document.querySelector('.error').style.display = 'block';
+            alert('Error en el registro. Por favor, inténtelo de nuevo más tarde.');
         }
     });
+});

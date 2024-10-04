@@ -7,7 +7,6 @@
     <title>Mascotas</title>
 </head>
 <body>
-    <p>ESTAS EN LA SECCION DE MASCOTAS</p>
     <header>
         <div class="text-start">
             <p class="fs-1">RIAB</p>
@@ -22,39 +21,81 @@
             </div>
         </div>      
     </header>
-    <main>
-        <div class="form-contenedor">
-            <h1 style="text-align: center;">Crea mascota</h1>
-            <form id="form-registro-mascota" style="width: 200px; margin: 0 auto;">
-                <p>Ingrese los datos de la mascota:</p>
-                
-                <!-- <label for="id-mascota">id</label> -->
-                <!-- <input type="number" name="id-mascota" id="id-mascota" placeholder="ingrese el numero de id de la mascota..." required>
- -->
-                <!-- <label for="foto">Foto de la Mascota</label>
-                <input type="file" name="image"> -->
+    <main class="container mt-4">
+        <h1 class="text-center">Registro Mascota</h1>
+        <form id="form-registro-mascota" style="max-width: 400px; margin: 0 auto;" class="bg-light p-4 rounded shadow needs-validation" novalidate>
+            <p>Ingrese los datos de la mascota:</p>
+            
+            <div class="mb-3">
+                <label for="nombre-apodo" class="form-label">Nombre/Apodo</label>
+                <input type="text" class="form-control" name="nombre-apodo" id="nombre-apodo" 
+                       placeholder="Ingrese el nombre/apodo de su mascota..." 
+                       pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios." required>
+                <div class="invalid-feedback">Ingrese un nombre/apodo válido (solo letras y espacios).</div>
+            </div>
+            
 
-                <label for="nombre-apodo">Nombre/Apodo</label>
-                <input type="text" name="nombre-apodo" id="nombre-apodo" placeholder="ingrese el nombre/apodo de su mascota..." required>
+            <div class="mb-3">
+                <label for="especie" class="form-label">Especie</label>
+                <select class="form-select" name="especie" id="especie" required>
+                    <option value="" disabled selected>Seleccione una especie...</option>
+                    <option value="perro">Perro</option>
+                    <option value="gato">Gato</option>
+                    <option value="loro">Loro</option>
+                </select>
+                <div class="invalid-feedback">Por favor seleccione una especie.</div>
+            </div>
 
-                <label for="especie">Especie</label>
-                <input type="text" name="especie" id="especie" placeholder="ingrese el tipo de especie de su mascota..." required>
+            <div class="mb-3">
+                <label for="raza" class="form-label">Raza</label>
+                <select class="form-select" name="raza" id="raza" required>
+                    <option value="" disabled selected>Seleccione una raza...</option>
+                    <option value="labrador">Labrador</option>
+                    <option value="bulldog">Bulldog</option>
+                    <option value="persa">Persa</option>
+                </select>
+                <div class="invalid-feedback">Por favor seleccione una raza.</div>
+            </div>
 
-                <label for="raza">Raza</label>
-                <input type="text" name="raza" id="raza" placeholder="Ingrese el tipo de raza..." required>
-
-                <label for="color">Color</label>
-                <input type="text" name="color" id="color" placeholder="Ingrese el color de la mascota..." required>
-                
-                <label for="estado-salud">estado de salud</label>
-                <input type="text" name="estado-salud" id="estado-salud" placeholder="ingrese su estado-salud" required>
-                
-                <label for="anio-nacimiento">año de nacimiento</label>
-                <input type="number" name="anio-nacimiento" id="anio-nacimiento" placeholder="ingrese su anio-nacimiento" required>
-                
-                <button type="submit">Confirmar registro</button>
-            </form>
-         </div>
+            <div class="mb-3">
+                <label for="color" class="form-label">Color</label>
+                <select class="form-select" name="color" id="color" required>
+                    <option value="" disabled selected>Seleccione un color...</option>
+                    <option value="negro">Negro</option>
+                    <option value="blanco">Blanco</option>
+                    <option value="marrón">Marrón</option>
+                    <option value="gris">Gris</option>
+                </select>
+                <div class="invalid-feedback">Por favor seleccione un color.</div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="anio-nacimiento" class="form-label">Año de Nacimiento</label>
+                <select class="form-select" name="anio-nacimiento" id="anio-nacimiento" required>
+                    <option value="" disabled selected>Seleccione un año...</option>
+                    <script>
+                        const yearSelect = document.getElementById('anio-nacimiento');
+                        const yearRanges = [
+                            { label: '2000-2005', start: 2000, end: 2005 },
+                            { label: '2006-2011', start: 2006, end: 2011 },
+                            { label: '2012-2017', start: 2012, end: 2017 },
+                            { label: '2018-2023', start: 2018, end: 2023 },
+                            { label: '2024', start: 2024, end: 2024 }
+                        ];
+            
+                        yearRanges.forEach(range => {
+                            const option = document.createElement('option');
+                            option.value = range.start + '-' + range.end;
+                            option.textContent = range.label;
+                            yearSelect.appendChild(option);
+                        });
+                    </script>
+                </select>
+                <div class="invalid-feedback">Por favor seleccione un año de nacimiento.</div>
+            </div>            
+            
+            <button type="submit" class="btn btn-primary">Confirmar registro</button>
+        </form>
     </main>
     <script src="../rescatista-pages/scripts/altamascotas.js"></script>
 </body>
