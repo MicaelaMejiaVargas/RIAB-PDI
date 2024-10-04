@@ -33,11 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
             especie,
             raza,
             color,
-            anio_nacimiento: anioNacimiento
+            anio_nacimiento: parseInt(anioNacimiento, 10) // Asegúrate de que sea un número
         };
 
         try {
-            const response = await fetch('http://localhost:3000/mascotas/', {
+            const response = await fetch('http://localhost:3000/mascotas', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok && data.success) {
                 alert('Registro exitoso: ' + data.message);
                 form.reset();
-                window.location.href = '../rescatista-pages/index_rescatistas.html'; // Redirigir a otra página
+                window.location.href = '../pages/historial.html'; 
             } else {
                 alert('Error: ' + (data.message || 'Error en el registro.'));
             }
