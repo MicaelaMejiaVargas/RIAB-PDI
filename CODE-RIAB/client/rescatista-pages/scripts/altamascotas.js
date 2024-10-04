@@ -28,12 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const color = document.getElementById('color').value;
         const anioNacimiento = document.getElementById('anio-nacimiento').value;
 
+        // Asegurarse de que anioNacimiento es un número y no un rango
+        const [startYear, endYear] = anioNacimiento.split('-').map(Number);
+
         const mascotasData = {
             nombre_apodo: nombreApodo,
             especie,
             raza,
             color,
-            anio_nacimiento: parseInt(anioNacimiento, 10) // Asegúrate de que sea un número
+            anio_nacimiento: startYear // Guardamos el año de inicio
         };
 
         try {
