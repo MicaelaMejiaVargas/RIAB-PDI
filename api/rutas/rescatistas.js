@@ -14,7 +14,7 @@ router.get('/:dni', resController.obtener);
 // router.delete('/:dni', autorizar, resController.borrar);
 router.post('/registro', resController.crear);
 
-// router.post('/login', resController.login);
+router.post('/login', resController.login);
 // router.post("/logout", autorizar, resController.logout);
 
 module.exports = router

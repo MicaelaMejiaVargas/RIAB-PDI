@@ -89,9 +89,64 @@ const crear = async (req, res) => {
   }
 }
 
+const login = async (req, res) => {
+  try {
+    const { dni, passw } = req.body;
+
+    // validaciones en el login
+    if (!dni) {
+      return res.status(401).json({error: "DNI no puede estar vacio."})
+    }else{
+      if (dni.length < 8 || dni.length > 8) { 
+        return res.status(401).json({error: "DNI inválido: debe tener al menos 8 dígitos."})
+      }
+    }
+
+    if (!passw) {
+      return res.status(401).json({error: "La contrasena no puede estar vacía."})
+    }
+
+    //buscamos si el rescatista ya existe en la base de datos
+    let existeResc = await Rescatista.findOne({where: {dni}});
+
+    if (!existeResc) {
+      existeResc = {passw: "122ñ"}
+    }
+
+    const correctPassw = bcryptjs.compareSync(passw, existeResc.passw);
+    if (!correctPassw) {
+      return res.status(404).json({error:"Contraseña o DNI incorrectos."});
+    }
+
+    const rescatistaT = existeResc.toJSON();
+    delete rescatistaT.passw;
+    
+    // creación del token
+    const token = jwt.sign(rescatistaT, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRATION});
+
+    res.cookie("token",token,{
+      httpOnly: true,
+      sameSite: "none",
+    })
+
+    return res.status(200).json({
+      ok: true,
+      success: true,
+      message: "Inicio de sesión exitoso", 
+      data: {rescatistaT, token}
+    })
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      error: "Internal Server Error"})
+  }
+}
 
 module.exports = {
   obtenerTodos,
   obtener,
-  crear
+  crear,
+  login
 }
