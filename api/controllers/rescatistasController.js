@@ -98,7 +98,7 @@ const login = async (req, res) => {
       return res.status(401).json({error: "DNI no puede estar vacio."})
     }else{
       if (dni.length < 8 || dni.length > 8) { 
-        return res.status(401).json({error: "DNI inválido: debe tener al menos 8 dígitos."})
+        return res.status(401).json({error: "DNI inválido: debe tener 8 dígitos."})
       }
     }
 
@@ -124,6 +124,7 @@ const login = async (req, res) => {
     // creación del token
     const token = jwt.sign(rescatistaT, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRATION});
 
+    // configuración del token
     res.cookie("token",token,{
       httpOnly: true,
       sameSite: "none",
@@ -144,9 +145,85 @@ const login = async (req, res) => {
   }
 }
 
+const logout = async (req, res) => {
+  try {
+    res.clearCookie("token");
+
+    return res.status(200).json({ message: "Rescatista deslogueado exitosamente!!"});
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({error: "Internal Server Error"})
+  }
+}
+
+const actualizar = async (req, res) => {
+  try {
+    const { nombre, apellido, telefono, direccion, genero, email, passw } = req.body;
+    const {dni} = req.params;
+
+    const existResc = await Rescatista.findByPk(dni);
+    if (!existResc) {
+      return res.status(404).json({ error: "Rescatista no encontrado" });
+    }
+
+    const emailUsado = await Rescatista.findOne({ where: { email: email } });
+    if (emailUsado && emailUsado.dni != dni) {
+      return res.status(409).json({ error: "Este Email ya está en uso" });
+    }
+
+    const hashPassword = await bcryptjs.hash(passw, salt)
+
+    existResc.nombre = nombre;
+    existResc.apellido = apellido;
+    existResc.telefono = telefono;
+    existResc.direccion = direccion;
+    existResc.genero = genero;
+    existResc.email = email;
+    existResc.passw = hashPassword;
+
+    await existResc.save();
+
+    const datosRescatista = existResc.toJSON();
+    delete datosRescatista.passw;
+
+    return res.status(200).json({ message: "Rescatista actualizado exitosamente", data: datosRescatista});
+  } catch (error) {
+    // retornamos las VALIDACIONES del Modelo "Rescatista" en formato json
+    if (error.name === 'SequelizeValidationError') {
+      const errores = error.errors.map(err => err.message);
+      return res.status(400).json({ error: errores });
+    }
+
+    console.log(error);
+    return res.status(500).json({error: "Internal Server Error"})
+  }
+}
+
+const borrar = async (req, res) => {
+  try {
+    const dni = req.params.dni;
+
+    const existeResc = await Rescatista.findByPk(dni);
+    if (!existeResc) {
+      return res.status(404).json({ error: "Rescatista no encontrado" });
+    }
+
+    await Rescatista.destroy({ where: { dni: dni } });
+    res.clearCookie("token");
+
+    return res.status(200).json({ message: "Rescatista borrado con exito", data: existeResc});
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({error: "Internal Server Error"})
+  }
+}
+
 module.exports = {
   obtenerTodos,
   obtener,
   crear,
-  login
+  login,
+  logout,
+  actualizar,
+  borrar
 }

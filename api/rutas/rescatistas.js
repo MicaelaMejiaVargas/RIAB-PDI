@@ -10,11 +10,12 @@ const autorizar = require('../middlewares/auth');
 /**rutas con middleware */
 router.get('/',autorizar.verificacion, resController.obtenerTodos);
 router.get('/:dni', resController.obtener);
-// router.put('/:dni', autorizar, resController.actualizar);
-// router.delete('/:dni', autorizar, resController.borrar);
+router.put('/:dni', autorizar.verificacion, resController.actualizar);
+router.delete('/:dni', autorizar.verificacion, resController.borrar);
+
 router.post('/registro', resController.crear);
 
 router.post('/login', resController.login);
-// router.post("/logout", autorizar, resController.logout);
+router.post('/logout', autorizar.verificacion, resController.logout);
 
 module.exports = router
