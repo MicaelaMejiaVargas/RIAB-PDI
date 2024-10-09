@@ -1,5 +1,27 @@
+const razasPermitidas = {
+    perro: ['labrador', 'bulldog', 'beagle', 'poodle', 'chihuahua', 'otro'],
+    gato: ['persa', 'siamés', 'bengalí', 'maine coon', 'cruza', 'otro'],
+    loro: ['cacatúa', 'loro gris', 'amazonas', 'agaporni', 'loro de sol', 'otro'],
+    tortuga: ['tortuga de tierra', 'tortuga de agua', 'tortuga de estanque', 'tortuga gigante', 'otro'],
+    conejo: ['holland lop', 'rex', 'angora', 'mini rex', 'lionhead', 'otro'],
+    pato: ['pato pekinés', 'pato muscovy', 'pato rizado', 'pato cayuga', 'pato rouen', 'otro']
+};
+
+const especieSelect = document.getElementById('especie');
+const razaSelect = document.getElementById('raza');
+
+especieSelect.addEventListener('change', function() {
+    const especie = this.value;
+    razaSelect.innerHTML = '<option value="">Seleccione una raza</option>';
+    if (especie) {
+        razasPermitidas[especie].forEach(raza => {
+            razaSelect.innerHTML += `<option value="${raza}">${raza}</option>`;
+        });
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('form-registro-mascota');
+    const form = document.getElementById('mascotaForm');
     const submitButton = form.querySelector('button[type="submit"]');
 
     // Habilitar/deshabilitar el botón de envío basado en la validez del formulario
@@ -22,21 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         // Recoger datos del formulario
-        const nombreApodo = document.getElementById('nombre-apodo').value;
+        const nombreApodo = document.getElementById('nombre_apodo').value;
         const especie = document.getElementById('especie').value;
         const raza = document.getElementById('raza').value;
         const color = document.getElementById('color').value;
-        const anioNacimiento = document.getElementById('anio-nacimiento').value;
-
-        // Asegurarse de que anioNacimiento es un número y no un rango
-        const [startYear, endYear] = anioNacimiento.split('-').map(Number);
+        const anioNacimiento = document.getElementById('anio_nacimiento').value;
 
         const mascotasData = {
             nombre_apodo: nombreApodo,
             especie,
             raza,
             color,
-            anio_nacimiento: startYear // Guardamos el año de inicio
+            anio_nacimiento: anioNacimiento
         };
 
         try {

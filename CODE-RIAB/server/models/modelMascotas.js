@@ -21,6 +21,10 @@ const mascotas = sequelize.define('mascotas', {
         if (typeof valorMascota !== 'string') {
           throw new Error('El nombre/apodo debe ser un string');
         }
+      },
+      len: {
+        args: [2, 50],
+        msg: 'El nombre/apodo debe tener entre 2 y 50 caracteres.'
       }
     }
   },
@@ -29,16 +33,15 @@ const mascotas = sequelize.define('mascotas', {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-        notEmpty: {
-            msg: 'El campo especie no puede estar vacío.'
-        },
-        isIn: {
-            args: [['perro', 'gato', 'loro', 'tortuga', 'conejo', 'pato']],
-            msg: 'La especie debe ser uno de los valores permitidos: perro, gato, loro, tortuga, conejo, pato.'
-        }
+      notEmpty: {
+        msg: 'El campo especie no puede estar vacío'
+      },
+      isIn: {
+        args: [['perro', 'gato', 'loro', 'tortuga', 'conejo', 'pato']],
+        msg: 'La especie debe ser uno de los valores permitidos: perro, gato, loro, tortuga, conejo, pato.'
+      }
     }
-},
-
+  },
 
   raza: {
     type: DataTypes.STRING,
@@ -47,20 +50,6 @@ const mascotas = sequelize.define('mascotas', {
       notEmpty: {
         msg: 'El campo raza no puede estar vacío'
       },
-      isIn: {
-        args: [
-          ['labrador', 'bulldog', 'beagle', 'poodle', 'chihuahua', // Perro
-           'persa', 'siamés', 'bengalí', 'maine coon', 'cruza', // Gato
-           'cacatúa', 'loro gris', 'amazonas', 'agaporni', 'loro de sol', // Loro
-           'tortuga de tierra', 'tortuga de agua', 'tortuga de estanque', 'tortuga gigante', // Tortuga
-           'holland lop', 'rex', 'angora', 'mini rex', 'lionhead', // Conejo
-           'pato pekinés', 'pato muscovy', 'pato rizado', 'pato cayuga', 'pato rouen', // Pato
-           'otro'] // Opción para otras razas
-        ],
-        msg: 'La raza debe ser uno de los valores permitidos según la especie seleccionada.'
-      }
-    }
-  },
 
   color: {
     type: DataTypes.STRING,
@@ -106,3 +95,4 @@ mascotas.sync({ force: false })
   });
 
 module.exports = mascotas;
+
