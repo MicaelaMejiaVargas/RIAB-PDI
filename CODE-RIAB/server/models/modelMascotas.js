@@ -19,6 +19,11 @@ const mascotas = sequelize.define('mascotas', {
       len: {
         args: [2, 50],
         msg: 'El nombre/apodo debe tener entre 2 y 50 caracteres.'
+      },
+      isValidNombre: function(value) {
+        if (!/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/.test(value)) {
+          throw new Error('El nombre/apodo solo puede contener letras y espacios.');
+        }
       }
     }
   },

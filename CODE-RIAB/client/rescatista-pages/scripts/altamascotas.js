@@ -4,31 +4,27 @@ const razasPermitidas = {
     loro: ['cacatúa', 'loro gris', 'amazonas', 'agaporni', 'loro de sol', 'otro'],
     tortuga: ['tortuga de tierra', 'tortuga de agua', 'tortuga de estanque', 'tortuga gigante', 'otro'],
     conejo: ['holland lop', 'rex', 'angora', 'mini rex', 'lionhead', 'otro'],
-    pato: ['pato pekinés', 'pato muscovy', 'pato rizado', 'pato cayuga', 'pato rouen', 'otro'],
-    otro: ['otro'] // Para la opción "otro"
+    pato: ['pato pekinés', 'pato muscovy', 'pato rizado', 'pato cayuga', 'pato rouen', 'otro']
 };
 
 const especieSelect = document.getElementById('especie');
 const razaSelect = document.getElementById('raza');
 
-// Listener para actualizar las razas cuando cambie la especie
 especieSelect.addEventListener('change', function() {
     const especie = this.value;
-    razaSelect.innerHTML = '<option value="">Seleccione una raza</option>'; // Reiniciar opciones
-
-    if (especie && razasPermitidas[especie]) {
+    razaSelect.innerHTML = '<option value="">Seleccione una raza</option>';
+    if (especie) {
         razasPermitidas[especie].forEach(raza => {
             razaSelect.innerHTML += `<option value="${raza}">${raza}</option>`;
         });
     }
 });
 
-// Manejo de envío del formulario
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('mascotaForm');
     const submitButton = form.querySelector('button[type="submit"]');
 
-    // Validación y habilitación del botón de envío
+    // Habilitar/deshabilitar el botón de envío basado en la validez del formulario
     form.addEventListener('input', () => {
         const isValid = form.checkValidity();
         submitButton.disabled = !isValid;
@@ -43,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Envío del formulario
+    // Manejar el envío del formulario
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -53,12 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const color = document.getElementById('color').value;
         const anioNacimiento = document.getElementById('anio_nacimiento').value;
 
+        // Obtiene solo el primer año del rango
+        const anioInicio = anioNacimiento.split('-')[0];
+
         const mascotasData = {
             nombre_apodo: nombreApodo,
             especie,
             raza,
             color,
-            anio_nacimiento: anioNacimiento
+            anio_nacimiento: anioInicio // Cambia esto si necesitas el rango completo
         };
 
         try {
@@ -75,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok && data.success) {
                 alert('Registro exitoso: ' + data.message);
                 form.reset();
-                razaSelect.innerHTML = '<option value="">Seleccione una raza</option>'; // Reiniciar razas
                 window.location.href = '../pages/historial.html'; 
             } else {
                 alert('Error: ' + (data.message || 'Error en el registro.'));
