@@ -3,48 +3,47 @@ const mascota = require('../models/modelMascotas');
 // Listas de opciones permitidas
 const especiesPermitidas = ['perro', 'gato', 'loro', 'tortuga', 'conejo', 'pato'];
 const razasPermitidas = {
-    perro: ['labrador', 'bulldog', 'beagle', 'poodle', 'chihuahua'],
-    gato: ['persa', 'siamés', 'bengalí', 'maine coon', 'cruza'],
-    loro: ['cacatúa', 'loro gris', 'amazonas', 'agaporni', 'loro de sol'],
-    tortuga: ['tortuga de tierra', 'tortuga de agua', 'tortuga de estanque', 'tortuga de canoa', 'tortuga gigante'],
-    conejo: ['holland lop', 'rex', 'angora', 'mini rex', 'lionhead'],
-    pato: ['pato pekinés', 'pato muscovy', 'pato rizado', 'pato cayuga', 'pato rouen']
+    perro: ['labrador', 'bulldog', 'beagle', 'poodle', 'chihuahua', 'otro'],
+    gato: ['persa', 'siamés', 'bengalí', 'maine coon', 'cruza', 'otro'],
+    loro: ['cacatúa', 'loro gris', 'amazonas', 'agaporni', 'loro de sol', 'otro'],
+    tortuga: ['tortuga de tierra', 'tortuga de agua', 'tortuga de estanque', 'tortuga gigante', 'otro'],
+    conejo: ['holland lop', 'rex', 'angora', 'mini rex', 'lionhead', 'otro'],
+    pato: ['pato pekinés', 'pato muscovy', 'pato rizado', 'pato cayuga', 'pato rouen', 'otro']
 };
 
 // Función de validación
 const validarMascota = (data) => {
-  const { nombre_apodo, especie, raza, color, anio_nacimiento } = data;
+    const { nombre_apodo, especie, raza, color, anio_nacimiento } = data;
 
-  // Validación del nombre_apodo
-  if (!nombre_apodo || nombre_apodo.length < 2 || nombre_apodo.length > 50 || !/^[a-zA-Z\s]+$/.test(nombre_apodo)) {
-      return "Nombre-apodo inválido. Solo se permiten letras.";
-  }
+    // Validación del nombre_apodo
+    if (!nombre_apodo || nombre_apodo.length < 2 || nombre_apodo.length > 50 || !/^[a-zA-Z\s]+$/.test(nombre_apodo)) {
+        return "Nombre-apodo inválido. Solo se permiten letras y debe tener entre 2 y 50 caracteres.";
+    }
 
-  // Validación de especie
-  if (!especiesPermitidas.includes(especie)) {
-      return "Especie inválida. Debe ser una de las opciones permitidas.";
-  }
+    // Validación de especie
+    if (!especiesPermitidas.includes(especie)) {
+        return "Especie inválida. Debe ser una de las opciones permitidas: " + especiesPermitidas.join(", ") + ".";
+    }
 
-  // Validación de raza
-  if ((razasPermitidas[especie] && !razasPermitidas[especie].includes(raza)) && raza !== "otro") {
-      return "Raza inválida. Debe ser una de las opciones permitidas o 'otro'.";
-  }
+    // Validación de raza
+    if (!razasPermitidas[especie] || !razasPermitidas[especie].includes(raza)) {
+        return "Raza inválida. Debe ser una de las opciones permitidas o 'otro' para la especie seleccionada.";
+    }
 
-  // Validación de color
-  if (!color || !/^[a-zA-Z\s]+$/.test(color)) {
-      return "Color inválido. Solo se permiten letras.";
-  }
+    // Validación de color
+    if (!color || !/^[a-zA-Z\s]+$/.test(color)) {
+        return "Color inválido. Solo se permiten letras.";
+    }
 
-  // Validación del año de nacimiento
-  if (!anio_nacimiento || isNaN(anio_nacimiento) || 
-      anio_nacimiento < 2000 || anio_nacimiento > 2024) {
-      return "Año de nacimiento inválido. Debe estar entre 2000 y 2024.";
-  }
+    // Validación del año de nacimiento
+    if (!anio_nacimiento || isNaN(anio_nacimiento) || 
+        anio_nacimiento < 2000 || anio_nacimiento > 2024) {
+        return "Año de nacimiento inválido. Debe estar entre 2000 y 2024.";
+    }
 
-  return null; // No hay errores
+    return null; // No hay errores
 };
 
-// Obtener todas las mascotas
 const obtenerMascotas = async (req, res) => {
     try {
         const masc = await mascota.findAll();
@@ -55,7 +54,6 @@ const obtenerMascotas = async (req, res) => {
     }
 };
 
-// Obtener mascota por ID
 const obtenerMascotasId = async (req, res) => {
     try {
         const { id } = req.params;
@@ -72,21 +70,19 @@ const obtenerMascotasId = async (req, res) => {
     }
 };
 
-// Crear nueva mascota
 const crearMascotas = async (req, res) => {
     try {
-        console.log('Datos recibidos:', req.body); // Para verificar los datos recibidos
         const error = validarMascota(req.body);
         if (error) {
             return res.status(400).json({ error });
         }
 
-        const mascotaNueva = await mascota.create(req.body);
+        const mascotaNuevo = await mascota.create(req.body);
         
         return res.status(201).json({
             success: true,
             message: "Mascota creada!",
-            data: mascotaNueva
+            data: mascotaNuevo
         });
     } catch (error) {
         console.error('Error al crear mascota:', error);
@@ -94,7 +90,6 @@ const crearMascotas = async (req, res) => {
     }
 };
 
-// Actualizar mascota
 const actualizarMascotas = async (req, res) => {
     try {
         const pasarid = req.params.id;
@@ -117,12 +112,11 @@ const actualizarMascotas = async (req, res) => {
             data: actuMascota
         });
     } catch (error) {
-        console.error('Error al actualizar mascota:', error);
+        console.error('Error al actualizar la mascota:', error);
         return res.status(500).json({ error: "Internal Server Error" });
     }
 };
 
-// Borrar mascota
 const borrarMascotas = async (req, res) => {
     try {
         const id = req.params.id;
@@ -137,7 +131,7 @@ const borrarMascotas = async (req, res) => {
             message: "Mascota eliminada con éxito!"
         });
     } catch (error) {
-        console.error('Error al eliminar mascota:', error);
+        console.error('Error al borrar la mascota:', error);
         return res.status(500).json({ error: "Internal Server Error" });
     }
 };
@@ -149,3 +143,4 @@ module.exports = {
     actualizarMascotas,
     borrarMascotas
 };
+

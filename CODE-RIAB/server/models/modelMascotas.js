@@ -14,6 +14,9 @@ const mascotas = sequelize.define('mascotas', {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
+      notEmpty: {
+        msg: 'El campo nombre/apodo no puede estar vacío'
+      },
       isString: function(valorMascota) {
         if (typeof valorMascota !== 'string') {
           throw new Error('El nombre/apodo debe ser un string');
@@ -26,15 +29,16 @@ const mascotas = sequelize.define('mascotas', {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      notEmpty: {
-        msg: 'El campo especie no puede estar vacío'
-      },
-      isIn: {
-        args: [['perro', 'gato', 'loro']],
-        msg: 'La especie debe ser uno de los valores permitidos: perro, gato, loro.'
-      }
+        notEmpty: {
+            msg: 'El campo especie no puede estar vacío.'
+        },
+        isIn: {
+            args: [['perro', 'gato', 'loro', 'tortuga', 'conejo', 'pato']],
+            msg: 'La especie debe ser uno de los valores permitidos: perro, gato, loro, tortuga, conejo, pato.'
+        }
     }
-  },
+},
+
 
   raza: {
     type: DataTypes.STRING,
@@ -44,8 +48,16 @@ const mascotas = sequelize.define('mascotas', {
         msg: 'El campo raza no puede estar vacío'
       },
       isIn: {
-        args: [['labrador', 'bulldog', 'persa']],
-        msg: 'La raza debe ser uno de los valores permitidos: labrador, bulldog, persa.'
+        args: [
+          ['labrador', 'bulldog', 'beagle', 'poodle', 'chihuahua', // Perro
+           'persa', 'siamés', 'bengalí', 'maine coon', 'cruza', // Gato
+           'cacatúa', 'loro gris', 'amazonas', 'agaporni', 'loro de sol', // Loro
+           'tortuga de tierra', 'tortuga de agua', 'tortuga de estanque', 'tortuga gigante', // Tortuga
+           'holland lop', 'rex', 'angora', 'mini rex', 'lionhead', // Conejo
+           'pato pekinés', 'pato muscovy', 'pato rizado', 'pato cayuga', 'pato rouen', // Pato
+           'otro'] // Opción para otras razas
+        ],
+        msg: 'La raza debe ser uno de los valores permitidos según la especie seleccionada.'
       }
     }
   },
@@ -55,6 +67,9 @@ const mascotas = sequelize.define('mascotas', {
     allowNull: false,
     defaultValue: 'color no definido',
     validate: {
+      notEmpty: {
+        msg: 'El campo color no puede estar vacío'
+      },
       isIn: {
         args: [['negro', 'blanco', 'marrón', 'gris']],
         msg: 'El color debe ser uno de los valores permitidos: negro, blanco, marrón, gris.'
@@ -70,13 +85,11 @@ const mascotas = sequelize.define('mascotas', {
         msg: 'El año de nacimiento debe ser un número entero.'
       },
       isIn: {
-        args: [[
-          2000, 2001, 2002, 2003, 2004, 2005,
-          2006, 2007, 2008, 2009, 2010, 2011,
-          2012, 2013, 2014, 2015, 2016,
-          2017, 2018, 2019, 2020, 2021, 2022, 2023,
-          2024
-        ]],
+        args: [[2000, 2001, 2002, 2003, 2004, 2005,
+                2006, 2007, 2008, 2009, 2010, 2011,
+                2012, 2013, 2014, 2015, 2016,
+                2017, 2018, 2019, 2020, 2021, 2022, 2023,
+                2024]],
         msg: 'El año de nacimiento debe estar entre el año 2000 al 2024.'
       }
     }
