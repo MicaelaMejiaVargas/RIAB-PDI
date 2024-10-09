@@ -36,13 +36,21 @@
                 <label for="raza">Raza:</label>
                 <select class="form-control" id="raza" name="raza" required>
                     <option value="">Seleccione una raza</option>
+                    <!-- Opciones de razas se llenarán dinámicamente -->
                 </select>
                 <span class="text-danger" id="error_raza"></span>
             </div>
 
             <div class="form-group">
                 <label for="color">Color:</label>
-                <input type="text" class="form-control" id="color" name="color" required>
+                <select class="form-control" id="color" name="color" required>
+                    <option value="">Seleccione un color</option>
+                    <option value="negro">Negro</option>
+                    <option value="blanco">Blanco</option>
+                    <option value="marrón">Marrón</option>
+                    <option value="gris">Gris</option>
+                    <option value="otro">Otro</option>
+                </select>
                 <span class="text-danger" id="error_color"></span>
             </div>
 

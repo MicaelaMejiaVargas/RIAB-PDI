@@ -9,7 +9,6 @@ const mascotas = sequelize.define('mascotas', {
     primaryKey: true,
     autoIncrement: true
   },
-
   nombre_apodo: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -20,15 +19,9 @@ const mascotas = sequelize.define('mascotas', {
       len: {
         args: [2, 50],
         msg: 'El nombre/apodo debe tener entre 2 y 50 caracteres.'
-      },
-      isString(value) {
-        if (typeof value !== 'string') {
-          throw new Error('El nombre/apodo debe ser un string');
-        }
       }
     }
   },
-
   especie: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -37,12 +30,11 @@ const mascotas = sequelize.define('mascotas', {
         msg: 'El campo especie no puede estar vacío'
       },
       isIn: {
-        args: [['perro', 'gato', 'loro', 'tortuga', 'conejo', 'pato', 'otro']], // Incluyendo 'otro'
+        args: [['perro', 'gato', 'loro', 'tortuga', 'conejo', 'pato', 'otro']],
         msg: 'La especie debe ser uno de los valores permitidos: perro, gato, loro, tortuga, conejo, pato, otro.'
       }
     }
   },
-
   raza: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -56,7 +48,6 @@ const mascotas = sequelize.define('mascotas', {
       }
     }
   },
-
   color: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -66,12 +57,11 @@ const mascotas = sequelize.define('mascotas', {
         msg: 'El campo color no puede estar vacío'
       },
       isIn: {
-        args: [['negro', 'blanco', 'marrón', 'gris', 'otro']], // Incluyendo 'otro'
+        args: [['negro', 'blanco', 'marrón', 'gris', 'otro']],
         msg: 'El color debe ser uno de los valores permitidos: negro, blanco, marrón, gris, otro.'
       }
     }
   },
-
   anio_nacimiento: {
     type: DataTypes.INTEGER,
     allowNull: false,
