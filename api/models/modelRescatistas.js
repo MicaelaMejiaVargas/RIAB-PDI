@@ -30,7 +30,7 @@ const Rescatista = db.define('rescatistas', {
       validarDni(value) {
         const dniString = String(value);
         if (dniString.length < 8) {
-          throw new Error('DNI inválido: debe tener al menos 8 dígitos.');
+          throw new Error('DNI inválido: debe tener 8 dígitos.');
         }
         if (dniString.length > 8) {
           throw new Error('DNI inválido: tiene demasiados dígitos.');
