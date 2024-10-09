@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        // Recoger datos del formulario
         const nombreApodo = document.getElementById('nombre_apodo').value;
         const especie = document.getElementById('especie').value;
         const raza = document.getElementById('raza').value;
