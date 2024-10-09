@@ -10,6 +10,7 @@ const razasPermitidas = {
 const especieSelect = document.getElementById('especie');
 const razaSelect = document.getElementById('raza');
 
+// Llenar las razas según la especie seleccionada
 especieSelect.addEventListener('change', function() {
     const especie = this.value;
     razaSelect.innerHTML = '<option value="">Seleccione una raza</option>';
@@ -81,3 +82,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
