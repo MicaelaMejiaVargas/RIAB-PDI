@@ -31,12 +31,8 @@ const validarMascota = (data) => {
 
   // Validación del año de nacimiento
   if (!anio_nacimiento || isNaN(anio_nacimiento) || 
-      ![2000, 2001, 2002, 2003, 2004, 2005, 
-        2006, 2007, 2008, 2009, 2010, 2011,
-        2012, 2013, 2014, 2015, 2016, 
-        2017, 2018, 2019, 2020, 2021, 2022, 2023, 
-        2024].includes(anio_nacimiento)) {
-    return "Anio de nacimiento invalido. Debe ser uno de los años permitidos.";
+      anio_nacimiento < 2000 || anio_nacimiento > 2024) {
+    return "Año de nacimiento invalido. Debe estar entre 2000 y 2024.";
   }
 
   return null; // No hay errores
@@ -47,7 +43,8 @@ const obtenerMascotas = async (req, res) => {
     const masc = await mascota.findAll();
     return res.json(masc);
   } catch (error) {
-    return res.status(500).json({ err: "Internal Server Error" });
+    console.error('Error al obtener mascotas:', error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -62,6 +59,7 @@ const obtenerMascotasId = async (req, res) => {
 
     return res.status(200).json(masc);
   } catch (error) {
+    console.error('Error al obtener la mascota:', error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -96,7 +94,7 @@ const actualizarMascotas = async (req, res) => {
       return res.status(400).json({ error });
     }
 
-    const buscarMascota = await mascota.findOne({ where: { id: pasarid } });
+    const buscarMascota = await mascota.findByPk(pasarid);
 
     if (!buscarMascota) {
       return res.status(404).json({ message: "Mascota no encontrada." });
@@ -109,7 +107,7 @@ const actualizarMascotas = async (req, res) => {
       data: actuMascota
     });
   } catch (error) {
-    console.error(error);
+    console.error('Error al actualizar mascota:', error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -117,7 +115,7 @@ const actualizarMascotas = async (req, res) => {
 const borrarMascotas = async (req, res) => {
   try {
     const id = req.params.id;
-    const buscarMascota = await mascota.findOne({ where: { id } });
+    const buscarMascota = await mascota.findByPk(id);
 
     if (!buscarMascota) {
       return res.status(404).json({ message: "Mascota no encontrada." });
@@ -128,7 +126,7 @@ const borrarMascotas = async (req, res) => {
       message: "Mascota eliminada con éxito!"
     });
   } catch (error) {
-    console.error(error);
+    console.error('Error al eliminar mascota:', error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };

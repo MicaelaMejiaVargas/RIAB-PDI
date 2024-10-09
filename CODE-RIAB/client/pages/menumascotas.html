@@ -33,7 +33,6 @@
                        pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios." required>
                 <div class="invalid-feedback">Ingrese un nombre/apodo válido (solo letras y espacios).</div>
             </div>
-            
 
             <div class="mb-3">
                 <label for="especie" class="form-label">Especie</label>
@@ -42,6 +41,9 @@
                     <option value="perro">Perro</option>
                     <option value="gato">Gato</option>
                     <option value="loro">Loro</option>
+                    <option value="tortuga">Tortuga</option>
+                    <option value="conejo">Conejo</option>
+                    <option value="pato">Pato</option>
                 </select>
                 <div class="invalid-feedback">Por favor seleccione una especie.</div>
             </div>
@@ -50,9 +52,7 @@
                 <label for="raza" class="form-label">Raza</label>
                 <select class="form-select" name="raza" id="raza" required>
                     <option value="" disabled selected>Seleccione una raza...</option>
-                    <option value="labrador">Labrador</option>
-                    <option value="bulldog">Bulldog</option>
-                    <option value="persa">Persa</option>
+                    <!-- Las opciones se llenarán dinámicamente con JavaScript -->
                 </select>
                 <div class="invalid-feedback">Por favor seleccione una raza.</div>
             </div>
@@ -75,30 +75,49 @@
                     <option value="" disabled selected>Seleccione un año...</option>
                     <script>
                         const yearSelect = document.getElementById('anio-nacimiento');
-                        const yearRanges = [
-                            { label: 'Entre 2000 y 2003', start: 2000, end: 2003 },
-                            { label: 'Entre 2004 y 2007', start: 2004, end: 2007 },
-                            { label: 'Entre 2008 y 2011', start: 2008, end: 2011 },
-                            { label: 'Entre 2012 y 2015', start: 2012, end: 2015 },
-                            { label: 'Entre 2016 y 2019', start: 2016, end: 2019 },
-                            { label: 'Entre 2020 y 2023', start: 2020, end: 2023 },
-                            { label: '2024', start: 2024, end: 2024 }
-                        ];
-            
-                        yearRanges.forEach(range => {
+                        for (let year = 2000; year <= 2024; year++) {
                             const option = document.createElement('option');
-                            option.value = range.start + '-' + range.end;
-                            option.textContent = range.label;
+                            option.value = year;
+                            option.textContent = year;
                             yearSelect.appendChild(option);
-                        });
+                        }
                     </script>
                 </select>
                 <div class="invalid-feedback">Por favor seleccione un año de nacimiento.</div>
             </div>            
-            
+
             <button type="submit" class="btn btn-primary">Confirmar registro</button>
         </form>
     </main>
+    <script>
+        document.getElementById('especie').addEventListener('change', function() {
+            const especieSeleccionada = this.value;
+            const razaSelect = document.getElementById('raza');
+
+            // Limpiar las opciones anteriores
+            razaSelect.innerHTML = '<option value="" disabled selected>Seleccione una raza...</option>';
+
+            // Opciones de razas según la especie seleccionada
+            const razasPorEspecie = {
+                perro: ['Labrador', 'Bulldog', 'Beagle', 'Poodle', 'Chihuahua'],
+                gato: ['Persa', 'Siamés', 'Bengalí', 'Maine Coon', 'Cruza'],
+                loro: ['Cacatúa', 'Loro Gris', 'Amazonas', 'Agaporni', 'Loro de Sol'],
+                tortuga: ['Tortuga de Tierra', 'Tortuga de Agua', 'Tortuga de Estanque', 'Tortuga de Canoa', 'Tortuga Gigante'],
+                conejo: ['Holland Lop', 'Rex', 'Angora', 'Mini Rex', 'Lionhead'],
+                pato: ['Pato Pekinés', 'Pato Muscovy', 'Pato Rizado', 'Pato Cayuga', 'Pato Rouen']
+            };
+
+            // Agregar razas según la especie seleccionada
+            if (razasPorEspecie[especieSeleccionada]) {
+                razasPorEspecie[especieSeleccionada].forEach(raza => {
+                    const option = document.createElement('option');
+                    option.value = raza.toLowerCase(); // Usar minúsculas para el valor
+                    option.textContent = raza;
+                    razaSelect.appendChild(option);
+                });
+            }
+        });
+    </script>
     <script src="../rescatista-pages/scripts/altamascotas.js"></script>
 </body>
 </html>
