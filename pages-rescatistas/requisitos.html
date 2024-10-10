@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIAB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styleRequisitos/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar bg-dark navbar-expand-lg fixed-top text-center" data-bs-theme="dark">
+            <div class="container-fluid"> 
+              <a class="navbar-brand">RIAB</a>
+              <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+          
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body text-center">
+                  <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                    <li class="nav-item">
+                      <a class="nav-link mx-lg-2" aria-current="page" href="inicio-res.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link mx-lg-2" href="mascotas.html">Mascotas</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link mx-lg-2" href="requisitos.html">Requisitos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link mx-lg-2" href="centros.html">Centros</a>
+                    </li>
+                    <li class="nav-item"></li>
+                      <a class="nav-link mx-lg-2" href="añadirMascotas.html">Añadir Mascotas</a>
+                    </li>
+                    <li class="nav-item"></li>
+                      <a class="nav-link mx-lg-2" href="adoptar.html">Adoptar</a>
+                    </li>
+                    <li class="nav-item"></li>
+                      <a class="nav-link mx-lg-2" href="adoptar.html">Cerrar Sesión</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <main class="card shadow-lg" id="principal">
+        <div class="card-body">
+          <section>
+            <p class="p-1 mx-2" id="text"><em>“La misma chispa de vida que está dentro de ti, está dentro de todos nuestros amigos animales… El deseo de vivir es el mismo dentro de todos nosotros.”</em></p>
+          </section>
+          <section class="mx-3">
+            <h4>REQUISITOS DE DATOS</h4>
+            <div class="accordion shadow-lg rounded-2" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    1. Para encontrar al animal ideal para ti, tendrás que investigar un poco.
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Al explorar varios tipos y razas de perros y gatos, sus niveles de energía, sus necesidades de aseo y más, puedes asegurarte de que la mascota que llegue a tu hogar se adapte perfectamente a tu vida.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    2. Para adoptar puedes hacerlo por dos vías: refugios o particulares.
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Los refugios albergan animales para su cuidado, esperando que éstos encuentren un nuevo hogar que los adopte. También puedes buscar a través de particulares como amigos, familiares o veterinarias, ya sea por contacto directo o también por medio de publicaciones en redes sociales o páginas web.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    3. Dependiendo de la vía que sigas, serán distintos los requisitos que deberás cumplir.
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Mientras que con un particular pueden existir menores requisitos para obtener una mascota en adopción (tal vez por la cercanía), en un refugio este proceso es más estricto. En cada albergue cuentan con protocolos diferentes para cuidar a los animales y asegurarse de que quien está interesado en adoptarlos, sea alguien adecuado. Este puede ser un proceso que incluya: <br>
+                    <ul>
+                      <li>Solicitarte que llenes una solicitud con tus datos personales y motivos de adopción,</li>
+                      <li>Ofrecerte visitar al animal en el refugio un par de veces antes de adoptarlo</li>
+                      <li>Pedirte que les dejes conocer tu hogar, es decir, la que será la nueva casa del perro o gato</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    4. Adaptar tu hogar para la llegada de una nueva mascota.
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Una vez que te informaste sobre el tipo de mascota que llevarás a casa y, si tuviste la oportunidad de conocerlo por un tiempo, deberás prepararte para adaptar tu casa de acuerdo a las características de tu nueva mascota. Por ejemplo, si es un cachorro muy activo, deberás tener espacio, accesorios y tiempo para dedicarle y evitar que muerda todo; en el caso de llevar a un gato a casa, es importante contar con un rascador para mantenerlo activo, feliz y evitar que rasguñe tus muebles. También es indispensable habilitar un espacio específico para el descanso de tu mascota con una cama, además de recipientes para sus alimentos y, en el caso de los gatos, un arenero para que pueda hacer sus necesidades fisiológicas
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    5. Contemplar los cuidados que necesitará tu mascota.
+                  </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Iniciar el proceso de adopción y adquirir una mascota es sólo el primer paso, después seguirán años de grata compañía que requieren de cuidados básicos como atención médica y visitas veterinarias, alimentación adecuada, adiestramiento, juegos, caricias; además de posibles viajes, regalos ocasionales y eso sí, ¡muchas alegrías!
+
+                    Toma muy en cuenta que los refugios hacen muy bien su trabajo de cuidar a los animales rescatados, y es probable que muchos les den seguimiento aun cuando ya estén colocados en una nueva casa. Podrás recibir llamadas, correos o incluso visitas por parte de ellos.
+                  </div>
+                </div>
+              </div>
+            </div> <br><br>
+          </section>
+          <div class="text-center">
+            <img class="rounded-2 col-12 col-md-7" src="../img/perrito.jpg" style="border: 1px solid green;">
+          </div> <br>
+          <div class="card mx-auto col-12 col-md-7" style="max-width: 40em;" id="beneficios">
+            <div class="card-body">
+              <h5 class="text-center">BENEFICIOS DE ADOPTAR A UN ANIMAL</h5>
+              <p>
+                Una oportunidad de mejorar la calidad de vida de esa nueva mascota. <br>
+                La mascota tendrá un vínculo afectivo muy especial contigo en agradecimiento por haberlo adoptado en tu vida. <br>
+                Estarás ayudando a otras mascotas en adopción, ya que contribuyes a reducir el número de perros y gatos que viven en los refugios, así como al apoyar el valioso trabajo de estas organizaciones.
+              </p>
+            </div>
+          </div>
+    </main>
+
+    <footer>
+        <p class="" style="margin-top: 10px;"><em>Derechos de autor reservados - RIAB - Registro de Identidad de Adopción de Berazategui - @2024</em></p>
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>

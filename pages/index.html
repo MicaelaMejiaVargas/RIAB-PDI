@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIAB</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../stylesInicio/styles.css">
+</head>
+<body> 
+  <header>
+    <nav class="navbar bg-dark navbar-expand-lg fixed-top" data-bs-theme="dark">
+        <div class="container-fluid"> 
+          <a class="navbar-brand" style="margin-left: 70px;">RIAB</a>
+          <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+      
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body text-center">
+              <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link mx-lg-2" aria-current="page" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mx-lg-2" href="mascotas.html">Mascotas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mx-lg-2" href="requisitos.html">Requisitos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mx-lg-2" href="centros.html">Centros</a>
+                </li>
+                <li class="nav-item"></li>
+                  <a class="nav-link mx-lg-2" href="adoptar.html">¿Cómo Adoptar?</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a href="../pages-rescatistas/login.html" class="login-button">Iniciar Sesión</a>
+        </div>
+      </nav>
+  </header>
+  
+  
+  <div class="card shadow-lg" id="principal">
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="card m-3" style="width: 17em; border: 3px solid rgb(2, 2, 2);" id="c1"></div>
+        <div class="card m-3" style="width: 17em; border: 3px solid black;" id="c2"></div>
+        <div class="card m-3" style="width: 17em; border: 3px solid black;" id="c3"></div>
+        <div class="card m-3" style="width: 17em; border: 3px solid black;" id="c4"></div>
+      </div>
+    </div>
+
+    <button class="btn btn-success col-8 col-md-3 mx-auto mb-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Más Información</button>
+    <aside>
+      <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" style="color: rgb(46, 218, 46);" id="offcanvasScrollingLabel">VISITAS AL CENTRO VETERINARIO</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <p>En general tanto los gatos como los perros precisan ser desparasitados y vacunados periódicamente. El calendario y protocolo de vacunaciones y desparasitaciones lo establecerá su veterinario/a según la especie, edad, lugar donde resida y situación epidemiológica, entre otras.</p>
+        <p>Como norma general se debe acudir al veterinario/a como mínimo una vez al año y siempre que usted detecte síntomas anormales o cambios en sus hábitos y comportamiento.</p>
+        <p>En la sala de espera de la consulta atienda las indicaciones que reciba. En cualquier caso, evite dejar suelto al animal, y si es gato valore la posibilidad de que el trasportín esté cubierto por algún trozo de tela que le proporcione intimidad, colocándole alejado de perros u otros animales, y si es posible a cierta altura del suelo o sobre sus piernas si usted está sentado.</p>
+      </div>
+    </div>
+    </aside>
+  
+    <section>
+      <p class="p-2 mx-2" id="text">🐾 ¿VISTE UN ANIMAL PERDIDO?¿QUIERES REPORTAR UN CASO? 🐾 ¿QUIERES DONAR A UNA FUNDACIÓN DE RESCATES Y NO SABES CUALES HAY? <br> Completa tus datos abajo para poder responder a la brevedad. Para donaciones recuerda visitar la sección 'centros'. Gracias por involucrarte y ayudar a los animalitos.</p>
+            <div class="card text-center" style="width: 19em; margin: 0 auto;">
+              <div class="card-body shadow-lg rounded-4" style="border: 2px solid green;">
+                <form action="">
+                  <h5 class="card-title">¡Completa tus Datos!</h5> <br>
+                  <input class="rounded-2" type="text" placeholder="Nombre Completo" required> <br><br>
+                  <input class="rounded-2" type="text" placeholder="Apellido" required> <br><br>
+                  <input class="rounded-2" type="email" placeholder="Email" required> <br><br>
+                  <button class="btn btn-success">Enviar</button>
+                </form> 
+              </div>
+            </div> <br><br>
+    </section>
+      
+    <section>
+      <h4 class="text-center fs-2">TIPOS DE REFUGIOS</h4>  
+      <div class="card-body">
+        <div class="row justify-content-center">
+          <div class="card m-3" style="width: 17em; height: 316.984px;">
+            <h5 class="pt-3">Protectoras de Animales</h5>
+            <p class="pa">Una protectora de animales se rige por un principio claro y simple: el respeto a la dignidad del animal. Estas organizaciones se posicionan en contra de toda acción de maltrato hacia los animales, sea cual sea su motivo.</p>
+            <div class="modal fade" id="modalProtectoras" aria-hidden="true" aria-labelledby="modalProtectorasLabel" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-success">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalProtectorasLabel" style="color: white;">Protectoras de Animales</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" style="color: white;">
+                    Sólo emplean el sacrificio de los animales que acogen cuando éstos padecen una enfermedad terminal y cuando existe un peligro para la sociedad. Las protectoras de animales basan su actividad en acoger los diferentes animales que carecen de hogar. Las ayudas que reciben suelen ser de voluntarios que acogen temporalmente a los animales del albergue, generalmente los de corta edad. Existen diferentes modos de colaborar:
+                    <ol>
+                      <li>Haciéndose socios de la protectora.</li>
+                      <li>Haciendo donativos económicos o bien materiales que sirvan de ayuda a los animales.</li>
+                      <li>Colaborando en cualquier actividad (sacándoles a pasear, vacunarles, limpiarles, etc.).</li>
+                      <li>Divulgando información.</li>
+                      <li>Apadrinando los animales que se encuentran en la protectora.</li>
+                    </ol>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-dark" data-bs-target="#modalProtectoras" data-bs-toggle="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-success mb-3" data-bs-target="#modalProtectoras" data-bs-toggle="modal">Mas Info</button>
+          </div>
+          <div class="card m-3" style="width: 18em; height: 316.984px;">
+            <h5 class="pt-3">Santuario de Animales</h5>
+            <p class="pa">Los santuarios de animales cuidan de los animales durante el resto de sus vidas sin que necesariamente intenten buscarles otro hogar. Muchos de estos establecimientos aceptan a los animales que no son adoptables.</p>
+            <div class="modal fade" id="modalSantuarios" aria-hidden="true" aria-labelledby="modalSantuariosLabel" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-success">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalSantuariosLabel" style="color: white;">Santuario de Animales</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" style="color: white;">
+                    Los santuarios de animales cuidan de los animales durante el resto de sus vidas sin que necesariamente intenten buscarles otro hogar. Muchos de estos establecimientos aceptan a los animales que no son adoptables, como los animales cimarrones (gatos indomesticables), salvajes, animales de los que se ha abusado y que requieren cuidados especiales o únicos o animales en un estado médico que hace su adopción como animal de compañía difícil y poco probable.
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-dark" data-bs-target="#modalSantuarios" data-bs-toggle="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-success mb-3" data-bs-target="#modalSantuarios" data-bs-toggle="modal">Mas Info</button>
+          </div>
+          <div class="card m-3" style="width: 17em; height: 316.984px;">
+            <h5 class="pt-3">Refugios de Puertas Abiertas</h5>
+            <p class="pa">Un refugio que acepta a todos los animales que vienen a su puerta sin una lista de espera. Hay que tener en cuenta que los refugios tienen un espacio reducido donde van a caber un porcentaje de animales.</p>
+            <div class="modal fade" id="modalPuertas" aria-hidden="true" aria-labelledby="modalPuertasLabel" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-success">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalPuertasLabel" style="color: white;">Refugios de Puertas Abiertas</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" style="color: white;">
+                    Hay que ser siempre comprensivo con los problemas que esto acarrea, puesto que si algo gobierna el mundo de los refugios de animales, es la escasez de recursos.
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-dark" data-bs-target="#modalPuertas" data-bs-toggle="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-success mb-3" data-bs-target="#modalPuertas" data-bs-toggle="modal">Mas Info</button>
+          </div>
+          <div class="card m-3" style="width: 17em; height: 316.984px;">
+            <h5 class="pt-3">Servicio Municipal de Rescate</h5>
+            <p class="pa">El servicio de recogida municipal suelen ser empresas privadas con ánimo de lucro que son contratadas por los municipios para hacer cumplir las ordenanzas municipales, con fines de los rescates de los animales de ahi.</p>
+            <div class="modal fade" id="modalMunicipal" aria-hidden="true" aria-labelledby="modalMunicipalLabel" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-success">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalMunicipalLabel" style="color: white;">Servicio Municipal de Rescate</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" style="color: white;">
+                    Ofrecen servicio de adopción, ya que si el perro o el gato que llega a sus instalaciones no es reclamado por su responsable legal dentro de 10 días, puede ser adoptado, o será sacrificado en cuanto llegue el tiempo máximo que marque la ley.
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-dark" data-bs-target="#modalMunicipal" data-bs-toggle="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-success mb-3" data-bs-target="#modalMunicipal" data-bs-toggle="modal">Mas Info</button>
+          </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="mx-5">
+      <h4>COMO AYUDAR A LOS ANIMALES DE LA CALLE ABANDONADOS</h4>
+      <div class="accordion shadow-lg rounded-2" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Sácalo del ambiente nocivo
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Acércate con cuidado y deja que el animal se acostumbre a ti. Un buen truco es ofrecerle comida o estirar tu mano para que la huelan (en el caso de los perros). Si estuvieras en una vía muy transitada, pide ayuda de un amigo o de un transeúnte para proteger al animal de los carros. En las carreteras puedes pedir ayuda a la Policía, que pueden tener equipos especiales para rescatar a los animales con mayor seguridad.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Hogar, dulce hogar
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              La mejor opción es llevar al animal a tu casa. La mayoría de refugios y ONGs enfrentan sobrepoblación, falta de recursos, y difícilmente podrán cuidarlo tan bien como tú. Si no pudieras quedarte con el perro o el gato, habla con tu familia y amigos. Explícales que es temporal, solo hasta encontrarle un hogar definitivo, y que pueden compartir los gastos y hasta alternar hogares para el animal.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Comida y cuidados simples
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Un hogar provisional no tiene que ser perfecto o espacioso. Basta tener un área de servicio o una esquina en el patio, en donde el animal pueda resguardarse del frío y del calor. Improvisa una cama con un cobertor o una sábana vieja. Lo ideal es darle alimento empacado. Si no tuvieses cómo comprarlo, puedes combinar temporalmente comidas caseras como arroz, pollo, papas o legumbres cocinadas. No utilices sal ni aceite. Para los gatos, dales carne en trozos pequeños, como pescado, pollo carne molida.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              ¿Alguien perdió un animalito?
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              No todo animal en la calle fue abandonado, y es especialmente notorio cuando un animal está bien entrenado, bien alimentado o con collar. Asegúrate de que no está solo perdido. Conversa con los vecinos, pregunta en los comercios cercanos y pregunta por los dueños en redes sociales o en sitios especializados en Internet.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              Utiliza las redes
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Esta es la mejor manera para encontrar un dueño, antiguo o nuevo. Utiliza tu perfil en las redes sociales, sea Facebook, Twitter, Instagram o sitios de adopción de animales. ¡Lo importante es hacerte escuchar!  
+
+              Tómale una foto, cuenta cómo encontraste al animal y brinda detalles de su personalidad. ¿Es muy dócil? ¿Juguetón? ¿Le gusta que le acaricien el cuello, o detrás de las orejas? Esto ayuda a que las personas creen un vínculo emocional con el animalito y quieran adoptarlo. Detalla también su tamaño y edad aproximada, y no olvides de poner público el álbum de fotos, para que sea fácil de compartir, de etiquetar a amigos, divulgar en páginas, etc.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> <br><br>
+  </div>
+
+  <footer>
+    <p class="" style="margin-top: 10px;"><em>Derechos de autor reservados - RIAB - Registro de Identidad de Adopción de Berazategui - @2024</em></p>
+  </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,130 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "texto";
+  src: url("../Rajdhani/Rajdhani-Bold.ttf");
+}
+@font-face {
+  font-family: "texto-regular";
+  src: url("../Rajdhani/Rajdhani-Regular.ttf");
+}
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+body {
+  background: rgb(94, 163, 94);
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    color: rgb(241, 158, 25);
+  }
+}
+@media (max-width: 991px) {
+  .nav-link {
+    color: green;
+  }
+}
+.custom-toggler.navbar-toggler {
+  border-color: 0;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(241, 158, 25, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.login-button {
+  background-color: green;
+  color: black;
+  font-size: 14px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.login-button:hover {
+  background-color: green;
+  color: white;
+}
+
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-link {
+  position: relative;
+  color: white;
+}
+
+.nav-link:hover {
+  color: green;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: green;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+  width: 100%;
+  visibility: visible;
+}
+
+/* Evitar superposición de navbar fija */
+body {
+  padding-top: 60px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.card-header {
+  border-radius: 15px 15px 0 0;
+  font-weight: bold;
+}
+
+.card-body p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+footer {
+  background: rgba(8, 3, 32, 0.808);
+  color: white;
+  border-radius: 2em;
+  text-align: center;
+  text-align: center;
+  padding: 0.5px;
+}
+
+#principal {
+  margin-top: 3em;
+  margin: 0.5em 0.5em;
+}
+
+.card-body {
+  text-align: left;
+}
+
+/*# sourceMappingURL=style.css.map */

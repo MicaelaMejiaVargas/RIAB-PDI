@@ -1,0 +1,78 @@
+//Variables
+$fondo-pag : rgb(94, 163, 94);
+$letras: green;
+
+@font-face {
+    font-family: "texto";
+    src: url("../Rajdhani/Rajdhani-Bold.ttf");
+}
+
+@font-face {
+    font-family: "texto-regular";
+    src: url("../Rajdhani/Rajdhani-Regular.ttf");
+}
+
+html{
+    box-sizing: border-box;
+}
+*,*::after, *::before{
+    box-sizing: inherit;
+}
+
+body {
+    background: $fondo-pag;
+}
+
+//Cartas
+
+#principal{
+    margin-top: 3em;
+    margin: 0.5em 0.5em;
+}
+
+h2{
+    text-align: center;
+    font-family: "texto-regular";
+}
+
+/*Formularios de Adopción*/
+
+#form1{
+    border: 4px solid green;
+}
+
+form{
+    text-align: center;
+}
+
+h3{
+    font-size: 35px;
+    font-family: "texto";
+}
+
+//Inputs
+input, select   {
+    border: 4px double rgb(88, 173, 88);
+    padding: 4px;
+}
+
+select:hover{
+    border: 4px double rgb(4, 58, 4);
+}
+
+select::placeholder{
+   font-size: 15px; 
+}
+
+input:hover{
+    border: 4px double rgb(4, 58, 4);
+}
+
+input::placeholder{
+    font-size: 15px;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
