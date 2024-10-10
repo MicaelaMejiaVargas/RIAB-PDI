@@ -25,7 +25,19 @@ const obtener = async (req, res) => {
     const { dni } = req.params
     const resc = await Rescatista.findByPk(dni);
   
-    return res.status(200).json(resc) 
+    if (!resc) {
+      return res.status(404).json({
+        ok: false,
+        success: false,
+        error: "Rescatista no encontrado"
+      });
+    }
+
+    return res.status(200).json({
+      ok: true,
+      success: true,
+      data: resc
+    });
   } catch (error) {
     return res.status(500).json({error: "Internal Server Error"})
   }

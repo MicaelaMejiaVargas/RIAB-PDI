@@ -4,28 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-
-    <link rel="stylesheet" href="">
 </head>
 <body>
+    <style>
+        #aviso{
+            padding: 10px 15px 10px 20px;
+            margin: 8px 15px 0 15px;
+            border: 2px solid rgb(243, 243, 2);
+            background-color: yellow;
+        }
+    </style>
+
     <main>
+        <a href="../index.html">Volver</a> 
+
+        <div id="aviso"><b> El Inicio de Sesión es solo para uso exclusivo de Rescatistas Oficiales. Si querés ser un Rescatista Oficial hablanos a este correo: tr.soled@gmail.com </b></div>
         <div class="form-contenedor">
             <h1>Iniciar sesión</h1>
             <p>Ingresá tu n° de DNI y contraseña para acceder</p>
             <form id="form-login">
                 <label for="dni">DNI</label><br>
                 <input type="text" name="dni" id="dni" placeholder="Ingrese su DNI" required>
-                <br><br>
-                <label for="passw">Contraseña</label><br>
-                <input type="text" name="passw" id="passw" placeholder="Contraseña..." required>
+
+                <div class="input-group mb-3">
+                    <label for="passw">Contraseña</label><br>
+                    <input id="passw" name="passw" type="password" placeholder="Contraseña" required>
+                    <button id="mostrarPassw" type="button">👁</button>
+                </div>
+
                 <br><br>
                 <button type="submit" disabled>Iniciar Sesión</button>
-                <p class="error esconder" style="display: none;">Error al iniciar sesión</p>
+                <p class="error esconder" style="display: none;">Error al iniciar sesión, problemas con el servidor.</p>
             </form>
-            <p>¿No tenés una cuenta? <a href="./registro.html">Registrate</a> </p>
+            <!-- <p>¿No tenés una cuenta? <a href="./registro.html">Registrate</a> </p> -->
         </div>
     </main>
      
-    <script src="../scripts/login.js"></script>
+    <script src="./scripts/login.js"></script>
 </body>
 </html>
