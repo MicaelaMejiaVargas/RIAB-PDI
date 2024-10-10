@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIAB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styleLogin/style.css">
+</head>
+<body>
+    <h2><b>REGISTRO DE IDENTIDAD ANIMAL BERAZATEGUI</b></h2>
+    <main id="formularios">
+        <div class="card p-1 mx-auto rounded-5 shadow-lg" style="width: 45em;" id="form1">
+            <div class="card-body">
+              <form action="" class="col-12 col-md-12">
+                <h3>🐾FORMULARIO DE REGISTRO🐾</h3> <br>
+                <input type="text" placeholder="Nombre o Apodo" class="col-4"  required>
+                <input type="text" placeholder="Raza" class="col-4"  required style="margin-left: 15px;"> <br><br>
+                <input type="text" placeholder="Año de Nacimiento" class="col-4"  required>
+                <input type="text" placeholder="ID" class="col-4"  required style="margin-left: 15px;"> <br><br>
+                <select name="Tamaño" id="lang" class="col-4" required> 
+                  <option><p>Tamaño</p></option>
+                  <option value="peque">Pequeño</option>
+                  <option value="mediano">Mediano</option>
+                  <option value="grande">Grande</option>
+                </select>
+                <select name="género" id="lang" class="col-4" required style="margin-left: 15px;"> 
+                 <option><p>Género</p></option>
+                 <option value="m">M</option>
+                 <option value="f">F</option>
+                </select> <br><br>
+                <input type="text" placeholder="Color" class="col-4" required>
+                <input type="text" placeholder="Estado de Salud" class="col-4" required style="margin-left: 15px;"> <br><br>
+
+                <button class="btn btn-danger col-9" type="reset">Borrar Datos</button>
+                <a href="index.html" class="btn btn-success m-1 col-9 text-center">Confirmar</a>
+              </form>
+            </div> 
+          </div>
+        </div>
+    </main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>
