@@ -27,7 +27,6 @@ body {
 h2 {
   text-align: center;
   font-family: "texto-regular";
-  color: white;
 }
 
 /*Formularios de Adopción*/
@@ -37,6 +36,12 @@ h2 {
 
 form {
   text-align: center;
+}
+
+h4 {
+  text-align: center;
+  background: red;
+  color: white;
 }
 
 h3 {
