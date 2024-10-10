@@ -14,6 +14,9 @@ router.get('/:id', controladorMascota.obtenerMascotasId);
 // Crear una nueva mascota
 router.post('/', controladorMascota.crearMascotas); 
 
+//Obtencion de mascota
+router.get('/mascotas', getAllMascotas);
+
 // Actualizar una mascota existente
 router.put('/:id', controladorMascota.actualizarMascotas);
 
